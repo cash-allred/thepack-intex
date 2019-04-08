@@ -1,0 +1,89 @@
+## this is the skeleton of all pages on in this app - it defines the basic html tags
+<%! import datetime  %>
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <head>
+        <link rel="icon" href="${ STATIC_URL }homepage/media/favicon.ico">
+        <title>Jedi &mdash; <%block name="title"></%block></title>
+
+        ## add any site-wide scripts or CSS here; for example, jquery:
+        <script src="${ STATIC_URL }homepage/media/jquery-3.3.1.js"></script>
+        <script src="${ STATIC_URL }homepage/media/js/bootstrap.js"></script>
+        <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/css/bootstrap.css">
+
+        ## render the static file links with the same name as this template
+        ##help  with this one! Does it need the static url?
+        <script src="/django_mako_plus/dmp-common.min.js"></script>
+        ${ django_mako_plus.links(self) }
+
+    </head>
+
+    <body>
+        <div id="maintenance_message" class="alert alert-danger">The site is going down tonight. I know... Shucks</div>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <img class="small_logo" src="${ STATIC_URL }homepage/media/python.png" alt="python" />
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ${ 'active' if request.dmp.page == 'index' else ''}">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <%block name="navbar_items">                    
+                    </%block>
+                    %if not request.user.is_authenticated:
+                        <li class="nav-item ${ 'active' if request.dmp.page == 'login' else ''}"><a class="nav-link" href="/account/login/">Login</a></li>
+                    % endif
+
+                    %if request.user.is_authenticated:
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Cart</a>
+                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="/account/logout/">Log Out</a>
+                            </div>
+                        </li>
+                    %endif
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+            
+            <div class="title">do or do not<br/> there is no try</div>
+        </header>
+
+        <main>
+            <div id="site_left">
+                <%block name="left_menu">
+                    Left side
+                </%block>
+            </div>
+            <div id="site_center">
+                <%block name="content">
+                    center side
+                </%block>
+            </div>
+            <div id="site_right">
+                <%block name="right_content">
+                    right text
+                </%block>
+            </div>
+        </main>
+
+        <footer>
+           <div class="footer_text">
+            Copyright &copy; ${ datetime.datetime.today().year } Cash Allred  
+            </div>     
+        </footer>
+
+    </body>
+</html>

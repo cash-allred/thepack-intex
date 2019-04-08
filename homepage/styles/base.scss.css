@@ -1,0 +1,94 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.small_logo {
+  width: 50px;
+  height: auto;
+}
+
+#maintenance_message {
+  position: absolute;
+  width: 250px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  text-align: center;
+}
+
+.clearfix {
+  clear: both;
+}
+
+header {
+  background-color: #147871;
+  padding-bottom: 15px;
+  border-top: 4px solid #606060;
+  border-bottom: 4px solid #606060;
+}
+
+header h1 {
+  color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+}
+
+header > .title {
+  display: inline-block;
+  color: #3771A1;
+  font-size: 40px;
+  font-weight: bold;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+  vertical-align: middle;
+}
+
+header img {
+  vertical-align: middle;
+  margin-right: 24px;
+}
+
+main {
+  position: relative;
+  margin: 0;
+  padding: 0px;
+}
+main #site_left {
+  background-color: green;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200px;
+  min-height: 100%;
+}
+main #site_right {
+  background-color: salmon;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 200px;
+  height: 100%;
+}
+main #site_center {
+  background-color: blue;
+  margin-left: 200px;
+  margin-right: 200px;
+  height: 100%;
+  position: relative;
+}
+
+footer {
+  background-color: pink;
+  position: fixed;
+  bottom: 0;
+  text-align: right;
+  width: 100%;
+}
+
+.footer_text {
+  text-align: center;
+}
+
+/*# sourceMappingURL=base.scss.css.map */

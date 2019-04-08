@@ -1,0 +1,11 @@
+<%inherit file="/catalog/templates/base_ajax.htm"/>
+
+<%block name="content">
+  <div class="product-tile">
+    <a href="/catalog/product/${product.id}">
+      <img class="product-image" src="${product.image_url()}"/>
+      <div class="product-name">${product.name}</div>
+      <div class="product-price">${product.price}</div>
+    </a>
+  </div>
+</%block>

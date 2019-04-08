@@ -1,0 +1,26 @@
+<%inherit file="app_base.htm" />
+
+<%block name="content">
+    <div class="content">
+        <h1 class = "text-center">${ 'Product' if category is None else category.name }</h1>
+        <h3>Here are the products!</h3>
+        <h4 class="utc-time">I could have put some lorem ipsum here but I didn't....</h4>
+    </div>
+
+    <div id="catalog">
+        %for product in products:
+            <span class="product-container" data-product-id="${ product.id }"></span>
+        %endfor
+    </div>
+
+    <div id="paginator" class="text-right">
+        %if page > 1:
+            <a class="btn btn-secondary" href="/catalog/index/${ 0 if category is None else category.id}/${page-1}/">Previous</a>
+        %endif
+        %if page < numpages:
+            <a class="btn btn-secondary" id="move" href="/catalog/index/${ 0 if category is None else category.id}/${page+1}/">Next</a>
+        %endif
+    </div>
+    <br>
+    <br>
+</%block>
