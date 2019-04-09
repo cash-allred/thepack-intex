@@ -5,10 +5,10 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554833541.1510472
+_modified_time = 1554833602.8145494
 _enable_loop = True
-_template_filename = 'C:/Users/Katrina/Documents/INTEXII/thepack-intex/account/templates/login.html'
-_template_uri = 'login.html'
+_template_filename = 'C:/Users/Katrina/Documents/INTEXII/thepack-intex/account/templates/prescriberdetail.html'
+_template_uri = 'prescriberdetail.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
 import django.utils.html
@@ -58,7 +58,7 @@ def render_title(context,**pageargs):
         def title():
             return render_title(context)
         __M_writer = context.writer()
-        __M_writer('Login')
+        __M_writer('Dashboard')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -82,6 +82,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Katrina/Documents/INTEXII/thepack-intex/account/templates/login.html", "uri": "login.html", "source_encoding": "utf-8", "line_map": {"29": 0, "40": 1, "45": 3, "55": 3, "61": 3, "67": 5, "75": 5, "76": 9, "77": 9, "83": 77}}
+{"filename": "C:/Users/Katrina/Documents/INTEXII/thepack-intex/account/templates/prescriberdetail.html", "uri": "prescriberdetail.html", "source_encoding": "utf-8", "line_map": {"29": 0, "40": 1, "45": 3, "55": 3, "61": 3, "67": 5, "75": 5, "76": 9, "77": 9, "83": 77}}
 __M_END_METADATA
 """
