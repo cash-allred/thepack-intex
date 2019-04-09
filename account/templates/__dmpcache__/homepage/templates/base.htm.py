@@ -5,9 +5,15 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
+<<<<<<< HEAD
+_modified_time = 1554830396.82741
+_enable_loop = True
+_template_filename = 'C:/Users/USER/intex2/thepack-intex/homepage/templates/base.htm'
+=======
 _modified_time = 1554832190.0858548
 _enable_loop = True
 _template_filename = 'C:/Users/Katrina/Documents/INTEXII/thepack-intex/homepage/templates/base.htm'
+>>>>>>> 38651073b24b91043acb53e764b4e971ed1aa6a4
 _template_uri = '/homepage/templates/base.htm'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -21,6 +27,21 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+<<<<<<< HEAD
+        request = context.get('request', UNDEFINED)
+        def left_menu():
+            return render_left_menu(context._locals(__M_locals))
+        def content():
+            return render_content(context._locals(__M_locals))
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def right_content():
+            return render_right_content(context._locals(__M_locals))
+        def title():
+            return render_title(context._locals(__M_locals))
+        def navbar_items():
+            return render_navbar_items(context._locals(__M_locals))
+        self = context.get('self', UNDEFINED)
+=======
         self = context.get('self', UNDEFINED)
         def right_content():
             return render_right_content(context._locals(__M_locals))
@@ -34,6 +55,7 @@ def render_body(context,**pageargs):
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def title():
             return render_title(context._locals(__M_locals))
+>>>>>>> 38651073b24b91043acb53e764b4e971ed1aa6a4
         __M_writer = context.writer()
         __M_writer('\r\n<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n        <link rel="icon" href="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
@@ -156,6 +178,10 @@ def render_right_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
+<<<<<<< HEAD
+{"filename": "C:/Users/USER/intex2/thepack-intex/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 2, "20": 0, "38": 2, "39": 7, "40": 7, "45": 8, "46": 11, "47": 11, "48": 11, "49": 12, "50": 12, "51": 13, "52": 13, "53": 17, "54": 18, "55": 18, "56": 24, "57": 26, "58": 26, "59": 29, "60": 29, "61": 35, "62": 35, "67": 39, "68": 40, "69": 41, "70": 41, "71": 41, "72": 43, "73": 44, "74": 45, "75": 56, "80": 71, "85": 76, "90": 81, "91": 87, "92": 87, "98": 8, "109": 38, "115": 38, "121": 69, "127": 69, "133": 74, "139": 74, "145": 79, "151": 79, "157": 151}}
+=======
 {"filename": "C:/Users/Katrina/Documents/INTEXII/thepack-intex/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 2, "20": 0, "38": 2, "39": 7, "40": 7, "45": 8, "46": 11, "47": 11, "48": 11, "49": 12, "50": 12, "51": 13, "52": 13, "53": 17, "54": 18, "55": 18, "56": 24, "57": 26, "58": 26, "59": 29, "60": 29, "61": 35, "62": 35, "67": 39, "68": 40, "69": 41, "70": 41, "71": 41, "72": 43, "73": 44, "74": 45, "75": 56, "80": 71, "85": 76, "90": 81, "91": 87, "92": 87, "98": 8, "109": 38, "115": 38, "121": 69, "127": 69, "133": 74, "139": 74, "145": 79, "151": 79, "157": 151}}
+>>>>>>> 38651073b24b91043acb53e764b4e971ed1aa6a4
 __M_END_METADATA
 """

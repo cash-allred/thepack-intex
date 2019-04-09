@@ -1,0 +1,16 @@
+<%inherit file="/homepage/templates/base.htm" />
+<%block name="navbar_items">
+<%! from catalog import models as cmod %>
+
+</%block>
+
+<%block name="left_menu">
+    <h3>Categories</h3>
+    <ul class='no_bullets'>
+        <!--Do we need to have the category ID be dynamic?-->
+        <li><a href="/catalog/index/">All categories</a></li>
+        %for cat in cmod.Category.objects.order_by('name'):
+            <li><a href="/catalog/index/${ cat.id }/">${ cat.name }</a></li>  
+        %endfor     
+    <ul>
+</%block>
