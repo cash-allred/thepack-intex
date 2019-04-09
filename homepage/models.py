@@ -19,7 +19,7 @@ class Doctor (models.Model):
     ]
     gender = models.CharField(max_length=1, default=STATUS_CHOICES[0][0], choices=STATUS_CHOICES)
     state = models.TextField(default="Doctor Location")
-    credentials = models.TextField(null = true)
+    credentials = models.TextField(default="none")
     specialty = models.TextField(default="Doctor Specialty")
     OPIOID_CHOICES = [
         ( 0, 'False' ),
