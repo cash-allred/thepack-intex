@@ -19,3 +19,17 @@ class User(AbstractUser):
 
     # retrieve (or create) a Sale with purchased=None for this user
     # return the Sale object
+
+    #experimenting with docs found online
+    #class Meta:
+        #permissions= (
+            #("can_search", "Ability to search data for specific user or drug"),
+            #("can_view_all_prescriber_details", "Can view raw prescriber details, including names"),
+            #("can_view_modified_prescriber_details", "Can view anonymized prescriber details"),
+            #("can_create_data", "Can create doctor, drug, and prescription records"),
+            #("can_read_data", "Can read doctor, drug, and prescription data"),
+            #("can_update_data", "Can update doctor, drug, and prescription data"),
+            #("can_delete_data", "Can delete doctor, drug, and prescription data"),
+            #("view_all_analytics", "Can view all analytical tools"),
+            #("view_select_analytics", "Can view select analytical tools"),
+        #)
