@@ -1,0 +1,28 @@
+<%inherit file="/homepage/templates/base.htm" />
+
+<%block name="content">
+    <div class="content">
+        <h3>Here are the Doctors!</h3>
+        <h4 class="utc-time">I could have put some lorem ipsum here but I didn't....</h4>
+    </div>
+
+    <div id="catalog">
+    <table>
+        <tr>
+            <th>Doctor ID</th>
+            <th>Name</th>
+        </tr>
+        %for doctor in doctors:
+            <span class="product-container" data-product-id="${ doctor.doctorID }"></span>
+            <tr>
+                <td>${ doctor.doctorID }</td>
+                <td>${ doctor.fName } ${ doctor.lName }</td>
+            </tr>
+        %endfor
+
+    </table>
+    </div>
+
+    <br>
+    <br>
+</%block>
