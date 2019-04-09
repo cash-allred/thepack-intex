@@ -92,10 +92,10 @@ AUTH_USER_MODEL = 'account.User'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'is413database',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+        'NAME': 'postgres',
+        'USER': 'vmadmin@thepack-postgresql',
+        'PASSWORD': 'zx3R$cmcvnqwurhgpsud',
+        'HOST': 'thepack-postgresql.postgres.database.azure.com',
         'PORT': '5432',
     }
 }
