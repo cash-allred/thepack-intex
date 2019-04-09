@@ -12,7 +12,7 @@ TAX_RATE = Decimal("0.05")
 class Doctor (models.Model):
     firstName = models.TextField(default="Doctor First Name")
     lastName = models.TextField(default="Doctor Last Name")
-    doctorID = models.IntegerField()
+    doctorID = models.IntegerField(default="0")
     STATUS_CHOICES = [
         ( 'F', 'Female' ),
         ( 'M', 'Male' ),
