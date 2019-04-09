@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1552527741.529559
+_modified_time = 1554843456.9476361
 _enable_loop = True
-_template_filename = 'C:/Users/the_m/Desktop/first_tutorial/mysite/catalog/templates/index.html'
+_template_filename = 'C:/Users/the_m/Desktop/intex_website/mysite/catalog/templates/index.html'
 _template_uri = 'index.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -30,13 +30,13 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        page = context.get('page', UNDEFINED)
         category = context.get('category', UNDEFINED)
-        numpages = context.get('numpages', UNDEFINED)
-        self = context.get('self', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
+        numpages = context.get('numpages', UNDEFINED)
+        page = context.get('page', UNDEFINED)
         products = context.get('products', UNDEFINED)
+        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -52,13 +52,13 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        page = context.get('page', UNDEFINED)
         category = context.get('category', UNDEFINED)
-        numpages = context.get('numpages', UNDEFINED)
-        self = context.get('self', UNDEFINED)
         def content():
             return render_content(context)
+        numpages = context.get('numpages', UNDEFINED)
+        page = context.get('page', UNDEFINED)
         products = context.get('products', UNDEFINED)
+        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n    <div class="content">\r\n        <h1 class = "text-center">')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'Product' if category is None else category.name ))
@@ -88,6 +88,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/the_m/Desktop/first_tutorial/mysite/catalog/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "41": 1, "46": 26, "52": 3, "63": 3, "64": 5, "65": 5, "66": 11, "67": 12, "68": 12, "69": 12, "70": 14, "71": 17, "72": 18, "73": 18, "74": 18, "75": 18, "76": 18, "77": 20, "78": 21, "79": 21, "80": 21, "81": 21, "82": 21, "83": 23, "89": 83}}
+{"filename": "C:/Users/the_m/Desktop/intex_website/mysite/catalog/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "41": 1, "46": 26, "52": 3, "63": 3, "64": 5, "65": 5, "66": 11, "67": 12, "68": 12, "69": 12, "70": 14, "71": 17, "72": 18, "73": 18, "74": 18, "75": 18, "76": 18, "77": 20, "78": 21, "79": 21, "80": 21, "81": 21, "82": 21, "83": 23, "89": 83}}
 __M_END_METADATA
 """

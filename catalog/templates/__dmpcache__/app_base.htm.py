@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1553025313.788934
+_modified_time = 1554843457.0301642
 _enable_loop = True
-_template_filename = 'C:/Users/the_m/Desktop/first_tutorial/mysite/catalog/templates/app_base.htm'
+_template_filename = 'C:/Users/the_m/Desktop/intex_website/mysite/catalog/templates/app_base.htm'
 _template_uri = 'app_base.htm'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -34,9 +34,9 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         def navbar_items():
             return render_navbar_items(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
         def left_menu():
             return render_left_menu(context._locals(__M_locals))
+        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'navbar_items'):
@@ -69,9 +69,9 @@ def render_navbar_items(context,**pageargs):
 def render_left_menu(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        self = context.get('self', UNDEFINED)
         def left_menu():
             return render_left_menu(context)
+        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n    <h3>Categories</h3>\r\n    <ul class=\'no_bullets\'>\r\n        <!--Do we need to have the category ID be dynamic?-->\r\n        <li><a href="/catalog/index/">All categories</a></li>\r\n')
         for cat in cmod.Category.objects.order_by('name'):
@@ -88,6 +88,6 @@ def render_left_menu(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/the_m/Desktop/first_tutorial/mysite/catalog/templates/app_base.htm", "uri": "app_base.htm", "source_encoding": "utf-8", "line_map": {"18": 3, "31": 0, "41": 1, "46": 5, "56": 2, "62": 2, "63": 3, "69": 7, "76": 7, "77": 12, "78": 13, "79": 13, "80": 13, "81": 13, "82": 13, "83": 15, "89": 83}}
+{"filename": "C:/Users/the_m/Desktop/intex_website/mysite/catalog/templates/app_base.htm", "uri": "app_base.htm", "source_encoding": "utf-8", "line_map": {"18": 3, "31": 0, "41": 1, "46": 5, "56": 2, "62": 2, "63": 3, "69": 7, "76": 7, "77": 12, "78": 13, "79": 13, "80": 13, "81": 13, "82": 13, "83": 15, "89": 83}}
 __M_END_METADATA
 """
