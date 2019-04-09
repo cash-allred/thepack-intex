@@ -1,14 +1,16 @@
 <%inherit file="app_base.htm" />
+<%! from homepage import models as hmod %>
 
 <%block name="content">
     <div class="content">
         <h3>This is the Drug Page</h3>
     </div>
     <div>
-    <%doc>
-        %for drug in Drug:
-            <p>${drug.drugName}</p>
-        %endfor  
-    </%doc>
+        <ul id="limheight">
+            %for object in hmod.Drug.objects.all():
+                <li><a href="#">${object.drugName}</a></li>
+            %endfor 
+        </ul>
+        
     </div>
 </%block>
