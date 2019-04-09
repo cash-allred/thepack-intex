@@ -5,7 +5,7 @@ from homepage import models as hmod
 
 @view_function
 def process_request(request):
-    drugs = hmod.Drug.objects   
+    drugs = hmod.Drug.objects.all()
      
     context={
         'drugs': drugs,
