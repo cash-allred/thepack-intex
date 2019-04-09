@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
@@ -46,11 +47,3 @@ class OverdoseDeaths(models.Model):
     population = models.IntegerField(default=0)
     deaths = models.IntegerField(default=0)
     abbrev = models.ForeignKey(Doctor, on_delete=models.CASCADE)
-
-
-
-
-
-
-
-
