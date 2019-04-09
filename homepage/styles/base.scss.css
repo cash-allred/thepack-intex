@@ -24,7 +24,6 @@ html, body {
 }
 
 header {
-  background-color: #147871;
   padding-bottom: 15px;
   border-top: 4px solid #606060;
   border-bottom: 4px solid #606060;
@@ -56,7 +55,7 @@ main {
   padding: 0px;
 }
 main #site_left {
-  background-color: green;
+  background-color: navy;
   position: absolute;
   left: 0;
   top: 0;
@@ -64,7 +63,6 @@ main #site_left {
   min-height: 100%;
 }
 main #site_right {
-  background-color: salmon;
   position: absolute;
   right: 0;
   top: 0;
@@ -72,7 +70,6 @@ main #site_right {
   height: 100%;
 }
 main #site_center {
-  background-color: blue;
   margin-left: 200px;
   margin-right: 200px;
   height: 100%;
@@ -80,7 +77,6 @@ main #site_center {
 }
 
 footer {
-  background-color: pink;
   position: fixed;
   bottom: 0;
   text-align: right;

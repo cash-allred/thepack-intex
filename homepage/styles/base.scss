@@ -26,7 +26,6 @@ html, body {
 }
 
 header {
-    background-color: #147871;
     padding-bottom: 15px;
     border-top: 4px solid #606060;
     border-bottom: 4px solid #606060;
@@ -61,7 +60,7 @@ main {
     
 
     #site_left{
-        background-color: green;
+        background-color: navy;
         position: absolute; 
         left: 0;
         top: 0;
@@ -70,7 +69,6 @@ main {
     }
 
     #site_right{
-        background-color: salmon;
         position: absolute;
         right: 0;
         top: 0;
@@ -79,7 +77,6 @@ main {
     }
 
     #site_center{
-        background-color: blue;
         margin-left: $side_col_width;
         margin-right: $side_col_width;
         height: 100%;
@@ -88,7 +85,6 @@ main {
 }
 
 footer {
-    background-color: pink;
     position: fixed;
     bottom:0;
     text-align: right;
