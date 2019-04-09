@@ -10,22 +10,22 @@ TAX_RATE = Decimal("0.05")
 # Create your models here.
 
 class Doctor (models.Model):
-    firstName = models.TextField(default="Doctor First Name")
-    lastName = models.TextField(default="Doctor Last Name")
-    doctorID = models.IntegerField(default="0")
+    doctorID = models.IntegerField(default=0, primary_key=True)
+    fName = models.TextField(default="Doctor First Name")
+    lName = models.TextField(default="Doctor Last Name")
     STATUS_CHOICES = [
         ( 'F', 'Female' ),
         ( 'M', 'Male' ),
     ]
     gender = models.CharField(max_length=1, default=STATUS_CHOICES[0][0], choices=STATUS_CHOICES)
-    credentials = models.TextField(default="Doctor Credentials")
-    location = models.TextField(default="Doctor Location")
+    state = models.TextField(default="Doctor Location")
+    credentials = models.TextField(default="none", null=True)
     specialty = models.TextField(default="Doctor Specialty")
     OPIOID_CHOICES = [
-        ( 'F', 'False' ),
-        ( 'T', 'True' ),
+        ( 0, 'False' ),
+        ( 1, 'True' ),
     ]
-    opioidPrescriber = models.CharField(max_length=1, default=OPIOID_CHOICES[0][0], choices=OPIOID_CHOICES)
+    opioidPrescriber = models.IntegerField(default=OPIOID_CHOICES[0][0])
     totalPrescriptions = models.IntegerField()
 
 class Drug (models.Model):
@@ -34,12 +34,19 @@ class Drug (models.Model):
         ( 'F', 'Is Not Opiate' ),
         ( 'T', 'Is Opiate' ),
     ]
-    drugType = models.CharField(max_length=1, default=STATUS_CHOICES[0][0], choices=STATUS_CHOICES)
+    isOpioid = models.CharField(max_length=1, default=STATUS_CHOICES[0][0], choices=STATUS_CHOICES)
     
 class Prescription(models.Model):
     doctorID = models.ForeignKey(Doctor, on_delete = models.CASCADE)
     drugName = models.ForeignKey(Drug, on_delete = models.CASCADE)
-    quantity = models.DecimalField(max_digits=20, decimal_places=6)
+    quantity = models.IntegerField(default=0)
+
+class OverdoseDeaths(models.Model):
+    state = models.TextField(default="State")
+    population = models.IntegerField(default=0)
+    deaths = models.IntegerField(default=0)
+    abbrev = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+
 
 
 
