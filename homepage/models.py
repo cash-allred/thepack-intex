@@ -29,13 +29,16 @@ class Doctor (models.Model):
     totalPrescriptions = models.IntegerField()
 
 class Drug (models.Model):
-    name = models.TextField(default="Drug Name")
+    drugName = models.TextField(default="Drug Name")
     STATUS_CHOICES = [
         ( 'F', 'Is Not Opiate' ),
         ( 'T', 'Is Opiate' ),
     ]
     drugType = models.CharField(max_length=1, default=STATUS_CHOICES[0][0], choices=STATUS_CHOICES)
+    
+class Prescription(models.Model):
     doctorID = models.ForeignKey(Doctor, on_delete = models.CASCADE)
+    drugName = models.ForeignKey(Drug, on_delete = models.CASCADE)
     quantity = models.DecimalField(max_digits=20, decimal_places=6)
 
 
