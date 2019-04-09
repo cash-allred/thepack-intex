@@ -10,7 +10,7 @@ TAX_RATE = Decimal("0.05")
 # Create your models here.
 
 class Doctor (models.Model):
-    doctorID = models.IntegerField(default=0)
+    doctorID = models.IntegerField(default=0, primary_key=True)
     fName = models.TextField(default="Doctor First Name")
     lName = models.TextField(default="Doctor Last Name")
     STATUS_CHOICES = [
@@ -19,7 +19,7 @@ class Doctor (models.Model):
     ]
     gender = models.CharField(max_length=1, default=STATUS_CHOICES[0][0], choices=STATUS_CHOICES)
     state = models.TextField(default="Doctor Location")
-    credentials = models.TextField(default="none")
+    credentials = models.TextField(default="none", null=True)
     specialty = models.TextField(default="Doctor Specialty")
     OPIOID_CHOICES = [
         ( 0, 'False' ),
@@ -34,7 +34,7 @@ class Drug (models.Model):
         ( 'F', 'Is Not Opiate' ),
         ( 'T', 'Is Opiate' ),
     ]
-    drugType = models.CharField(max_length=1, default=STATUS_CHOICES[0][0], choices=STATUS_CHOICES)
+    isOpioid = models.CharField(max_length=1, default=STATUS_CHOICES[0][0], choices=STATUS_CHOICES)
     
 class Prescription(models.Model):
     doctorID = models.ForeignKey(Doctor, on_delete = models.CASCADE)
