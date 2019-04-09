@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'homepage',
     'account',
     'catalog',
+    'drugs',
+
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,14 @@
+<%inherit file="app_base.htm" />
+
+<%block name="content">
+    <div class="content">
+        <h3>This is the Drug Page</h3>
+    </div>
+    <div>
+    <%doc>
+        %for drug in Drug:
+            <p>${drug.drugName}</p>
+        %endfor
+        </%doc>
+    </div>
+</%block>
