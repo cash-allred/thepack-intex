@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'account',
     'catalog',
     'drugs',
-
+    'prescribers',
 ]
 
 MIDDLEWARE = [
