@@ -69,6 +69,7 @@ TEMPLATES = [
         'NAME': 'django_mako_plus',
         'BACKEND': 'django_mako_plus.MakoTemplates',
         'OPTIONS': {
+
             'CONTENT_PROVIDERS': [
                 {   'provider': 'django_mako_plus.JsContextProvider' },
                 {   'provider': 'django_mako_plus.CompileScssProvider',
@@ -79,6 +80,21 @@ TEMPLATES = [
                     'filepath': lambda p: os.path.join(p.app_config.name, 'styles', p.template_relpath + '.scss.css'),
                 },
                 {   'provider': 'django_mako_plus.JsLinkProvider' },
+            ],
+        },
+        
+    },
+    {
+        'NAME': 'django',
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
