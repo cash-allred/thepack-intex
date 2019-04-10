@@ -10,12 +10,14 @@
         <tr>
             <th>Doctor ID</th>
             <th>Name</th>
+            <th>Details</th>
         </tr>
         %for doctor in doctors:
             <span class="product-container" data-product-id="${ doctor.doctorID }"></span>
             <tr>
                 <td>${ doctor.doctorID }</td>
                 <td>${ doctor.fName } ${ doctor.lName }</td>
+                <td><a href="/prescribers/details/${doctor.doctorID}">Details</a><td>
             </tr>
         %endfor
 
@@ -24,16 +26,6 @@
 </%block>
 
 <%block name="right_content">
-    <!-- This is not the django form, this is a simple HTML form
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="First Name" aria-label="First Name">
-        <input class="form-control mr-sm-2" type="search" placeholder="Last Name" aria-label="Last Name">
-        <input class="form-control mr-sm-2" type="search" placeholder="Gender" aria-label="Gender">
-        <input class="form-control mr-sm-2" type="search" placeholder="Credentials" aria-label="Credentials">
-        <input class="form-control mr-sm-2" type="search" placeholder="State" aria-label="State">        
-        <input class="form-control mr-sm-2" type="search" placeholder="Specialty" aria-label="Specialty">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Prescribers</button>
-    </form>-->
     <form method="POST">
         <table>
             ${ form.as_table() }

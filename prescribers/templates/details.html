@@ -1,0 +1,46 @@
+<%inherit file="/homepage/templates/base.htm" />
+
+<%block name="content">
+    <div class="content">
+        <h3>Presriber Details</h3>
+        %for doc in doctor:
+            <div class="doctor-name">${doc.fName} ${doc.lName}</div>
+            <table>
+                <tr>
+                    <th>Credentials</th>
+                    <th>Opioid Presriber</th>
+                    <th>Specialty</th>
+                    <th>State</th>
+                    <th>Gender</th>
+                    <th>Total Prescriptions/Year</th>
+                </tr>
+                <tr>                
+                    <td>${doc.credentials}</td>
+                    <td>${'Yes' if doc.opioidPrescriber == 1 else 'No'}</td>
+                    <td>${doc.specialty}</td>
+                    <td>${doc.state}</td>
+                    <td>${'Male' if doc.gender == 'M' else 'Female'}</td>
+                    <td>${doc.totalPrescriptions}</td>
+                </tr>
+            </table>
+        %endfor
+
+        <h3>Presriber Drug Prescriptions</h3>
+        <table>
+                <tr>
+                    <th>Drug Name</th>
+                    <th>Ammount Prescribed</th>
+                    <th>Average Prescribed in the Country</th>
+                </tr>
+                %for script in prescriptions:
+                <tr>                
+                    <td>${script.drugName.drugName}</td>
+                    <td>${script.quantity}</td>
+                    <td>${average[script.drugName]}
+                </tr>
+                %endfor
+            </table>
+        
+
+    </div>
+</%block>
