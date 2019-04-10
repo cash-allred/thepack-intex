@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554846426.9148097
+_modified_time = 1554849682.4528763
 _enable_loop = True
 _template_filename = 'C:/Users/the_m/Desktop/intex_website/mysite/homepage/templates/base.htm'
 _template_uri = '/homepage/templates/base.htm'
@@ -21,19 +21,19 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def right_content():
-            return render_right_content(context._locals(__M_locals))
-        def title():
-            return render_title(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def navbar_items():
-            return render_navbar_items(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
         def left_menu():
             return render_left_menu(context._locals(__M_locals))
         def content():
             return render_content(context._locals(__M_locals))
+        def navbar_items():
+            return render_navbar_items(context._locals(__M_locals))
+        self = context.get('self', UNDEFINED)
         request = context.get('request', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def title():
+            return render_title(context._locals(__M_locals))
+        def right_content():
+            return render_right_content(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\r\n<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n        <link rel="icon" href="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
@@ -72,7 +72,7 @@ def render_body(context,**pageargs):
         __M_writer('\r\n')
         if request.user.is_authenticated:
             __M_writer('                        <li class="nav-item dropdown">\r\n                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\r\n                            Account\r\n                            </a>\r\n                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">\r\n                            <a class="dropdown-item" href="#">Cart</a>\r\n                            <a class="dropdown-item" href="#">Settings</a>\r\n                            <a class="dropdown-item" href="/account/logout/">Log Out</a>\r\n                            </div>\r\n                        </li>\r\n')
-        __M_writer('                    </ul>\r\n                    <form class="form-inline my-2 my-lg-0">\r\n                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">\r\n                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>\r\n                    </form>\r\n                </div>\r\n            </nav>\r\n            \r\n\r\n        </header>\r\n\r\n        <main>\r\n            <div id="site_left">\r\n                ')
+        __M_writer('                    </ul>\r\n                </div>\r\n            </nav>\r\n            \r\n\r\n        </header>\r\n\r\n        <main>\r\n            <div id="site_left">\r\n                ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'left_menu'):
             context['self'].left_menu(**pageargs)
         
@@ -156,6 +156,6 @@ def render_right_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/the_m/Desktop/intex_website/mysite/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 2, "20": 0, "38": 2, "39": 7, "40": 7, "45": 8, "46": 11, "47": 11, "48": 11, "49": 12, "50": 12, "51": 13, "52": 13, "53": 17, "54": 18, "55": 18, "56": 24, "57": 26, "58": 26, "59": 29, "60": 29, "61": 35, "62": 35, "67": 39, "68": 40, "69": 41, "70": 41, "71": 41, "72": 43, "73": 44, "74": 45, "75": 56, "80": 71, "85": 76, "90": 81, "91": 87, "92": 87, "98": 8, "109": 38, "115": 38, "121": 69, "127": 69, "133": 74, "139": 74, "145": 79, "151": 79, "157": 151}}
+{"filename": "C:/Users/the_m/Desktop/intex_website/mysite/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 2, "20": 0, "38": 2, "39": 7, "40": 7, "45": 8, "46": 11, "47": 11, "48": 11, "49": 12, "50": 12, "51": 13, "52": 13, "53": 17, "54": 18, "55": 18, "56": 24, "57": 26, "58": 26, "59": 29, "60": 29, "61": 35, "62": 35, "67": 39, "68": 40, "69": 41, "70": 41, "71": 41, "72": 43, "73": 44, "74": 45, "75": 56, "80": 67, "85": 72, "90": 77, "91": 83, "92": 83, "98": 8, "109": 38, "115": 38, "121": 65, "127": 65, "133": 70, "139": 70, "145": 75, "151": 75, "157": 151}}
 __M_END_METADATA
 """

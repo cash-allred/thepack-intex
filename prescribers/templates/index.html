@@ -3,7 +3,6 @@
 <%block name="content">
     <div class="content">
         <h3>Here are the Doctors!</h3>
-        <h4 class="utc-time">I could have put some lorem ipsum here but I didn't....</h4>
     </div>
 
     <div id="catalog">
@@ -22,7 +21,23 @@
 
     </table>
     </div>
+</%block>
 
-    <br>
-    <br>
+<%block name="right_content">
+    <!-- This is not the django form, this is a simple HTML form
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="First Name" aria-label="First Name">
+        <input class="form-control mr-sm-2" type="search" placeholder="Last Name" aria-label="Last Name">
+        <input class="form-control mr-sm-2" type="search" placeholder="Gender" aria-label="Gender">
+        <input class="form-control mr-sm-2" type="search" placeholder="Credentials" aria-label="Credentials">
+        <input class="form-control mr-sm-2" type="search" placeholder="State" aria-label="State">        
+        <input class="form-control mr-sm-2" type="search" placeholder="Specialty" aria-label="Specialty">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Prescribers</button>
+    </form>-->
+    <form method="POST">
+        <table>
+            ${ form.as_table() }
+        </table>
+        <input type="submit" value="Search"> 
+    </form>
 </%block>
