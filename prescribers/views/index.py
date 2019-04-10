@@ -23,7 +23,7 @@ def process_request(request):
             doctors = doctors.filter(credentials__contains=form.cleaned_data['credentials'])
             doctors = doctors.filter(specialty__contains=form.cleaned_data['specialty'])
     else:
-        doctors = hmod.Doctor.objects.all()
+        doctors = ""#hmod.Doctor.objects.all()
     #numpages = math.ceil(doctors.count()/ ITEMS_PER_PAGE)
     #doctors = doctors[(page-1) * ITEMS_PER_PAGE: page * ITEMS_PER_PAGE]
     form = doctorSearchForm() 
