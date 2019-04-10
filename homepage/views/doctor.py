@@ -17,12 +17,21 @@ from .. import (
     conf
 )
 
+#CREATE
+#READ: reading and searching capability is taken care of with the @view_function process request
+#UPDATE
+#DELETE
+
+
+#figure out create function!
 @view_function
 def process_request(request):
-    test = List()
+    form = doctorCreateForm()
     hmod.Doctor.objects.add_doctor()
-    
+        
     context = {
+        'doctors': doctors,
+        'form': form,
         jscontext('now'): datetime.now(),
     }
     return request.dmp.render('doctor.html', context)
@@ -47,8 +56,6 @@ class List(LoginRequiredMixin, base_views.BaseListView):
             )
         
         return context
-
-
 
 
 class Create(LoginRequiredMixin, PermissionRequiredMixin, base_views.BaseCreateView):

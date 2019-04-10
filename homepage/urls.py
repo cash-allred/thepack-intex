@@ -11,37 +11,6 @@ urlpatterns = [
 
 ]
 
-from .views import overdose_deaths
-
-urlpatterns += [
-    # overdose_deaths
-    url(
-        '^overdosedeaths/$',
-        overdose_deaths.List.as_view(),
-        name=conf.OVERDOSEDEATHS_LIST_URL_NAME
-    ),
-    url(
-        '^overdosedeaths/create/$',
-        overdose_deaths.Create.as_view(),
-        name=conf.OVERDOSEDEATHS_CREATE_URL_NAME
-    ),
-    url(
-        '^overdosedeaths/(?P<pk>\d+)/$',
-        overdose_deaths.Detail.as_view(),
-        name=conf.OVERDOSEDEATHS_DETAIL_URL_NAME
-    ),
-    url(
-        '^overdosedeaths/(?P<pk>\d+)/update/$',
-        overdose_deaths.Update.as_view(),
-        name=conf.OVERDOSEDEATHS_UPDATE_URL_NAME
-    ),
-    url(
-        '^overdosedeaths/(?P<pk>\d+)/delete/$',
-        overdose_deaths.Delete.as_view(),
-        name=conf.OVERDOSEDEATHS_DELETE_URL_NAME
-    ),
-]
-
 from .views import prescription
 
 urlpatterns += [
@@ -73,36 +42,6 @@ urlpatterns += [
     ),
 ]
 
-from .views import drug
-
-urlpatterns += [
-    # drug
-    url(
-        '^drug/$',
-        drug.List.as_view(),
-        name=conf.DRUG_LIST_URL_NAME
-    ),
-    url(
-        '^drug/create/$',
-        drug.Create.as_view(),
-        name=conf.DRUG_CREATE_URL_NAME
-    ),
-    url(
-        '^drug/(?P<pk>\d+)/$',
-        drug.Detail.as_view(),
-        name=conf.DRUG_DETAIL_URL_NAME
-    ),
-    url(
-        '^drug/(?P<pk>\d+)/update/$',
-        drug.Update.as_view(),
-        name=conf.DRUG_UPDATE_URL_NAME
-    ),
-    url(
-        '^drug/(?P<pk>\d+)/delete/$',
-        drug.Delete.as_view(),
-        name=conf.DRUG_DELETE_URL_NAME
-    ),
-]
 
 from .views import doctor
 

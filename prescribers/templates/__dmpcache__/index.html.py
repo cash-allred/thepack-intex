@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554866238.483566
+_modified_time = 1554912805.6456318
 _enable_loop = True
 _template_filename = 'C:/Users/Katrina/Documents/INTEXII/thepack-intex/prescribers/templates/index.html'
 _template_uri = 'index.html'
@@ -30,13 +30,13 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        form = context.get('form', UNDEFINED)
         def right_content():
             return render_right_content(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
-        doctors = context.get('doctors', UNDEFINED)
+        form = context.get('form', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
+        doctors = context.get('doctors', UNDEFINED)
+        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -56,10 +56,10 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        doctors = context.get('doctors', UNDEFINED)
         self = context.get('self', UNDEFINED)
         def content():
             return render_content(context)
+        doctors = context.get('doctors', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n    <div class="content">\r\n        <h3>Here are the Doctors!</h3>\r\n    </div>\r\n\r\n    <div id="catalog">\r\n    <table>\r\n        <tr>\r\n            <th>Doctor ID</th>\r\n            <th>Name</th>\r\n        </tr>\r\n')
         for doctor in doctors:
@@ -81,10 +81,10 @@ def render_content(context,**pageargs):
 def render_right_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        form = context.get('form', UNDEFINED)
+        self = context.get('self', UNDEFINED)
         def right_content():
             return render_right_content(context)
-        self = context.get('self', UNDEFINED)
+        form = context.get('form', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n    <!-- This is not the django form, this is a simple HTML form\r\n    <form class="form-inline my-2 my-lg-0">\r\n        <input class="form-control mr-sm-2" type="search" placeholder="First Name" aria-label="First Name">\r\n        <input class="form-control mr-sm-2" type="search" placeholder="Last Name" aria-label="Last Name">\r\n        <input class="form-control mr-sm-2" type="search" placeholder="Gender" aria-label="Gender">\r\n        <input class="form-control mr-sm-2" type="search" placeholder="Credentials" aria-label="Credentials">\r\n        <input class="form-control mr-sm-2" type="search" placeholder="State" aria-label="State">        \r\n        <input class="form-control mr-sm-2" type="search" placeholder="Specialty" aria-label="Specialty">\r\n        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Prescribers</button>\r\n    </form>-->\r\n    <form method="POST">\r\n        <table>\r\n            ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( form.as_table() ))

@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554866238.510487
+_modified_time = 1554912805.6723626
 _enable_loop = True
 _template_filename = 'C:/Users/Katrina/Documents/INTEXII/thepack-intex/homepage/templates/base.htm'
 _template_uri = '/homepage/templates/base.htm'
@@ -21,19 +21,19 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def right_content():
-            return render_right_content(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
         def navbar_items():
             return render_navbar_items(context._locals(__M_locals))
+        def right_content():
+            return render_right_content(context._locals(__M_locals))
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         request = context.get('request', UNDEFINED)
         def left_menu():
             return render_left_menu(context._locals(__M_locals))
         def content():
             return render_content(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def title():
             return render_title(context._locals(__M_locals))
+        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n        <link rel="icon" href="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))

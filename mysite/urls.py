@@ -16,13 +16,77 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path
+from homepage import conf 
 
 urlpatterns = [
     # the built-in Django administrator
     url('admin/', admin.site.urls),
+    #path('account/', include('django.contrib.auth.urls')),
 
     # urls for any third-party apps go here
 
     # the DMP router - this should normally be the last URL listed
     url('', include('django_mako_plus.urls')),
+]
+
+from homepage.views import prescription
+
+urlpatterns += [
+    # prescription
+    url(
+        '^prescription/$',
+        prescription.List.as_view(),
+        name=conf.PRESCRIPTION_LIST_URL_NAME
+    ),
+    url(
+        '^prescription/create/$',
+        prescription.Create.as_view(),
+        name=conf.PRESCRIPTION_CREATE_URL_NAME
+    ),
+    url(
+        '^prescription/(?P<pk>\d+)/$',
+        prescription.Detail.as_view(),
+        name=conf.PRESCRIPTION_DETAIL_URL_NAME
+    ),
+    url(
+        '^prescription/(?P<pk>\d+)/update/$',
+        prescription.Update.as_view(),
+        name=conf.PRESCRIPTION_UPDATE_URL_NAME
+    ),
+    url(
+        '^prescription/(?P<pk>\d+)/delete/$',
+        prescription.Delete.as_view(),
+        name=conf.PRESCRIPTION_DELETE_URL_NAME
+    ),
+]
+
+from homepage.views import doctor
+
+urlpatterns += [
+    # doctor
+    url(
+        '^doctor/$',
+        doctor.List.as_view(),
+        name=conf.DOCTOR_LIST_URL_NAME
+    ),
+    url(
+        '^doctor/create/$',
+        doctor.Create.as_view(),
+        name=conf.DOCTOR_CREATE_URL_NAME
+    ),
+    url(
+        '^doctor/(?P<pk>\d+)/$',
+        doctor.Detail.as_view(),
+        name=conf.DOCTOR_DETAIL_URL_NAME
+    ),
+    url(
+        '^doctor/(?P<pk>\d+)/update/$',
+        doctor.Update.as_view(),
+        name=conf.DOCTOR_UPDATE_URL_NAME
+    ),
+    url(
+        '^doctor/(?P<pk>\d+)/delete/$',
+        doctor.Delete.as_view(),
+        name=conf.DOCTOR_DELETE_URL_NAME
+    ),
 ]
