@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 from django import forms
 from django.shortcuts import render, HttpResponseRedirect
 
-#CREATE
+#CREATE:
 #READ: reading and searching capability is taken care of with the @view_function process request
 #UPDATE
 #DELETE
@@ -39,20 +39,26 @@ def process_request(request):
     return request.dmp.render('prescription.html', context)
 
 class prescriptionCreateForm(forms.Form):
-    doctorID = forms.IntegerField(label='Doctor ID', required=True)
+    docID = forms.IntegerField(label='Doctor ID', required=True)
     drugName = forms.CharField(widget=forms.TextInput, label='Drug Name', required=True)
     quantity = forms.IntegerField(label='Quantity', required=True)
+    
     def clean(self):
         return self.cleaned_data
 
     def commit(self):
+        #create new prescription
         newPrescription = hmod.Prescription()
-        newPrescription.doctorID = self.cleaned_data('doctorID')
+        newPrescription.doctorID = self.cleaned_data('docID')
         newPrescription.drugName = self.cleaned_data('drugName')
         newPrescription.quantity = self.cleaned_data('quantity')
 
         newPrescription.save()
-
+        
+        #update prescription total for doctor
+        updatedDocPrescriptions = hmod.Doctor.objects.get(doctorID=docID)
+        updatedDocPrescriptions.totalPrescriptions += self.cleaned_data('quantity')
+        updatedDocPrescriptions.save()
 
 
 
