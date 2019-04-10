@@ -1,21 +1,11 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-try:
-    from django.core.urlresolvers import reverse_lazy
-except ImportError:
-    from django.urls import reverse_lazy
-from django import http
+from django.conf import settings
 from django_mako_plus import view_function, jscontext
-from datetime import datetime
+from datetime import datetime, timezone
 from homepage import models as hmod
-
-
-from base import views as base_views
-
-from .. import (
-    models,
-    forms,
-    conf
-)
+import math
+from django.core.exceptions import ValidationError
+from django import forms
+from django.shortcuts import render, HttpResponseRedirect
 
 #CREATE
 #READ: reading and searching capability is taken care of with the @view_function process request
@@ -26,104 +16,53 @@ from .. import (
 #figure out create function!
 @view_function
 def process_request(request):
-    form = doctorCreateForm()
-    hmod.Doctor.objects.add_doctor()
+    doctor = hmod.Doctor
+    if request.method =="POST":
+        form=doctorCreateForm(request.POST)
+        form.doctor = doctor
+        form.user = request.user
+        #if not form.user.is_authenticated:
+            #return HttpResponseRedirect('/account/login/')
+        if form.is_valid():
+            form.commit()
+            return HttpResponseRedirect('/')
+        form = doctorCreateForm()
+    
+    else:
+        form = doctorCreateForm()
         
     context = {
-        'doctors': doctors,
+        'doctor': doctor,
         'form': form,
         jscontext('now'): datetime.now(),
     }
     return request.dmp.render('doctor.html', context)
 
-class List(LoginRequiredMixin, base_views.BaseListView):
-    """
-    List all Doctors
-    """
-    queryset = models.Doctor.objects.all()
+class doctorCreateForm(forms.Form):
+    FirstName = forms.CharField(widget=forms.TextInput, label='First Name', required=True)
+    LastName = forms.CharField(widget=forms.TextInput, label='Last Name', required=True)
+    Gender = forms.ChoiceField(choices=hmod.Doctor.STATUS_CHOICES)
+    State = forms.CharField(widget=forms.TextInput, required=True)
+    Credentials = forms.ChoiceField(choices=[('MD','MD'),('DO','DO'),('DMD','DMD'),('NP','NP'),('DDS','DDS'),('PA','PA'),('MED','MED'),('LPC','LPC'),('RN','RN'),('OD','OD'),('','Null')], required=True)
+    Specialty = forms.CharField(widget=forms.TextInput, required=True)
+    OpioidPrescriber = forms.ChoiceField(choices=hmod.Doctor.OPIOID_CHOICES, label='Opioid Prescriber')
 
-    def __init__(self):
-        super(List, self).__init__()
+    def clean(self):
+        return self.cleaned_data
 
-    def get_context_data(self, **kwargs):
-        context = super(List, self).get_context_data(**kwargs)
+    def commit(self):
+        newDoc = hmod.Doctor()
+        newDoc.doctorID = (hmod.Doctor.doctorID.filter(max()) + 1)
+        newDoc.fName = self.cleaned_data.get('FirstName')
+        newDoc.lName = self.cleaned_data.get('LastName')
+        newDoc.gender = self.cleaned_data.get('Gender')
+        newDoc.state = self.cleaned_data.get('State')
+        newDoc.credentials = self.cleaned_data.get('Credentials')
+        newDoc.opioidPrescriber = self.cleaned_data.get('OpioidPrescriber')
+        newDoc.totalPrescriptions = 0
 
-        context['detail_url_name'] = conf.DOCTOR_DETAIL_URL_NAME
-
-        if self.request.user.has_perm("homepage.add_doctor"):
-            context['create_object_reversed_url'] = reverse_lazy(
-                conf.DOCTOR_CREATE_URL_NAME
-            )
-        
-        return context
-
-
-class Create(LoginRequiredMixin, PermissionRequiredMixin, base_views.BaseCreateView):
-    """
-    Create a Doctor
-    """
-    model = models.Doctor
-    permission_required = ('homepage.add_doctor')
-    form_class = forms.Doctor
-
-    def __init__(self):
-        super(Create, self).__init__()
-
-    def get_success_url(self):
-        return reverse_lazy(conf.DOCTOR_DETAIL_URL_NAME, kwargs=self.kwargs_for_reverse_url())
+        newDoc.save()
 
 
-class Detail(LoginRequiredMixin, base_views.BaseDetailView):
-    """
-    Detail of a Doctor
-    """
-    model = models.Doctor
-
-    def __init__(self):
-        super(Detail, self).__init__()
-
-    def get_context_data(self, **kwargs):
-        context = super(Detail, self).get_context_data(**kwargs)
-
-        if self.request.user.has_perm("homepage.change_doctor"):
-            context['update_object_reversed_url'] = reverse_lazy(
-                conf.DOCTOR_UPDATE_URL_NAME,
-                kwargs=self.kwargs_for_reverse_url()
-            )
-
-        if self.request.user.has_perm("homepage.delete_doctor"):
-            context['delete_object_reversed_url'] = reverse_lazy(
-                conf.DOCTOR_DELETE_URL_NAME,
-                kwargs=self.kwargs_for_reverse_url()
-            )
-
-        return context
 
 
-class Update(LoginRequiredMixin, PermissionRequiredMixin, base_views.BaseUpdateView):
-    """
-    Update a Doctor
-    """
-    model = models.Doctor
-    form_class = forms.Doctor
-    permission_required = ('homepage.change_doctor')
-
-    def __init__(self):
-        super(Update, self).__init__()
-
-    def get_success_url(self):
-        return reverse_lazy(conf.DOCTOR_DETAIL_URL_NAME, kwargs=self.kwargs_for_reverse_url())
-
-
-class Delete(LoginRequiredMixin, PermissionRequiredMixin, base_views.BaseDeleteView):
-    """
-    Delete a Doctor
-    """
-    model = models.Doctor
-    permission_required = ('homepage.delete_doctor')
-
-    def __init__(self):
-        super(Delete, self).__init__()
-
-    def get_success_url(self):
-        return reverse_lazy(conf.DOCTOR_LIST_URL_NAME)

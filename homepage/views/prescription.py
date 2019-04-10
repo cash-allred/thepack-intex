@@ -1,114 +1,58 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-try:
-    from django.core.urlresolvers import reverse_lazy
-except ImportError:
-    from django.urls import reverse_lazy
-from django import http
+from django.conf import settings
+from django_mako_plus import view_function, jscontext
+from datetime import datetime, timezone
+from homepage import models as hmod
+import math
+from django.core.exceptions import ValidationError
+from django import forms
+from django.shortcuts import render, HttpResponseRedirect
+
+#CREATE
+#READ: reading and searching capability is taken care of with the @view_function process request
+#UPDATE
+#DELETE
 
 
-from base import views as base_views
-
-from .. import (
-    models,
-    forms,
-    conf
-)
-
-
-class List(LoginRequiredMixin, base_views.BaseListView):
-    """
-    List all Prescriptions
-    """
-    queryset = models.Prescription.objects.all()
-
-    def __init__(self):
-        super(List, self).__init__()
-
-    def get_context_data(self, **kwargs):
-        context = super(List, self).get_context_data(**kwargs)
-
-        context['detail_url_name'] = conf.PRESCRIPTION_DETAIL_URL_NAME
-
-        if self.request.user.has_perm("homepage.add_prescription"):
-            context['create_object_reversed_url'] = reverse_lazy(
-                conf.PRESCRIPTION_CREATE_URL_NAME
-            )
+#figure out create function!
+@view_function
+def process_request(request):
+    prescription = hmod.Prescription
+    if request.method =="POST":
+        form=prescriptionCreateForm(request.POST)
+        form.prescription = prescription
+        form.user = request.user
+        #if not form.user.is_authenticated:
+            #return HttpResponseRedirect('/account/login/')
+        if form.is_valid():
+            form.commit()
+            return HttpResponseRedirect('/')
+        form = prescriptionCreateForm()
+    
+    else:
+        form = prescriptionCreateForm()
         
-        return context
+    context = {
+        'prescription': prescription,
+        'form': form,
+        jscontext('now'): datetime.now(),
+    }
+    return request.dmp.render('prescription.html', context)
+
+class prescriptionCreateForm(forms.Form):
+    doctorID = forms.IntegerField(label='Doctor ID', required=True)
+    drugName = forms.CharField(widget=forms.TextInput, label='Drug Name', required=True)
+    quantity = forms.IntegerField(label='Quantity', required=True)
+    def clean(self):
+        return self.cleaned_data
+
+    def commit(self):
+        newPrescription = hmod.Prescription()
+        newPrescription.doctorID = self.cleaned_data('doctorID')
+        newPrescription.drugName = self.cleaned_data('drugName')
+        newPrescription.quantity = self.cleaned_data('quantity')
+
+        newPrescription.save()
 
 
-class Create(LoginRequiredMixin, PermissionRequiredMixin, base_views.BaseCreateView):
-    """
-    Create a Prescription
-    """
-    model = models.Prescription
-    permission_required = (
-        'homepage.add_prescription'
-    )
-    form_class = forms.Prescription
-
-    def __init__(self):
-        super(Create, self).__init__()
-
-    def get_success_url(self):
-        return reverse_lazy(conf.PRESCRIPTION_DETAIL_URL_NAME, kwargs=self.kwargs_for_reverse_url())
 
 
-class Detail(LoginRequiredMixin, base_views.BaseDetailView):
-    """
-    Detail of a Prescription
-    """
-    model = models.Prescription
-
-    def __init__(self):
-        super(Detail, self).__init__()
-
-    def get_context_data(self, **kwargs):
-        context = super(Detail, self).get_context_data(**kwargs)
-
-        if self.request.user.has_perm("homepage.change_prescription"):
-            context['update_object_reversed_url'] = reverse_lazy(
-                conf.PRESCRIPTION_UPDATE_URL_NAME,
-                kwargs=self.kwargs_for_reverse_url()
-            )
-
-        if self.request.user.has_perm("homepage.delete_prescription"):
-            context['delete_object_reversed_url'] = reverse_lazy(
-                conf.PRESCRIPTION_DELETE_URL_NAME,
-                kwargs=self.kwargs_for_reverse_url()
-            )
-
-        return context
-
-
-class Update(LoginRequiredMixin, PermissionRequiredMixin, base_views.BaseUpdateView):
-    """
-    Update a Prescription
-    """
-    model = models.Prescription
-    form_class = forms.Prescription
-    permission_required = (
-        'homepage.change_prescription'
-    )
-
-    def __init__(self):
-        super(Update, self).__init__()
-
-    def get_success_url(self):
-        return reverse_lazy(conf.PRESCRIPTION_DETAIL_URL_NAME, kwargs=self.kwargs_for_reverse_url())
-
-
-class Delete(LoginRequiredMixin, PermissionRequiredMixin, base_views.BaseDeleteView):
-    """
-    Delete a Prescription
-    """
-    model = models.Prescription
-    permission_required = (
-        'homepage.delete_prescription'
-    )
-
-    def __init__(self):
-        super(Delete, self).__init__()
-
-    def get_success_url(self):
-        return reverse_lazy(conf.PRESCRIPTION_LIST_URL_NAME)

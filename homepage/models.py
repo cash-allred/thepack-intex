@@ -4,9 +4,6 @@ from django.db import models
 from decimal import Decimal
 TAX_RATE = Decimal("0.05")
 
-from . import (
-    conf
-)
 # Create your models here.
 
 class Doctor (models.Model):
@@ -27,6 +24,9 @@ class Doctor (models.Model):
     ]
     opioidPrescriber = models.IntegerField(default=OPIOID_CHOICES[0][0])
     totalPrescriptions = models.IntegerField()
+
+
+        
 
 class Drug (models.Model):
     drugName = models.TextField(default="Drug Name")
