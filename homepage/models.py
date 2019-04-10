@@ -1,13 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
-# Create your models here.
-
-
 from django.db import models
 from decimal import Decimal
 TAX_RATE = Decimal("0.05")
 
+from . import (
+    conf
+)
 # Create your models here.
 
 class Doctor (models.Model):

@@ -5,15 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-<<<<<<< HEAD
-_modified_time = 1554862642.6485326
-_enable_loop = True
-_template_filename = 'C:/Users/the_m/Desktop/intex_website/mysite/homepage/templates/base.htm'
-=======
-_modified_time = 1554912805.6723626
+_modified_time = 1554912815.2167947
 _enable_loop = True
 _template_filename = 'C:/Users/Katrina/Documents/INTEXII/thepack-intex/homepage/templates/base.htm'
->>>>>>> ff5af270e52db116cac38f9c6aa0d0b120798fe1
 _template_uri = '/homepage/templates/base.htm'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -27,34 +21,19 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-<<<<<<< HEAD
-        request = context.get('request', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def right_content():
-            return render_right_content(context._locals(__M_locals))
-        def navbar_items():
-            return render_navbar_items(context._locals(__M_locals))
-=======
         def navbar_items():
             return render_navbar_items(context._locals(__M_locals))
         def right_content():
             return render_right_content(context._locals(__M_locals))
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         request = context.get('request', UNDEFINED)
->>>>>>> ff5af270e52db116cac38f9c6aa0d0b120798fe1
         def left_menu():
             return render_left_menu(context._locals(__M_locals))
         def content():
             return render_content(context._locals(__M_locals))
-<<<<<<< HEAD
-        self = context.get('self', UNDEFINED)
-        def title():
-            return render_title(context._locals(__M_locals))
-=======
         def title():
             return render_title(context._locals(__M_locals))
         self = context.get('self', UNDEFINED)
->>>>>>> ff5af270e52db116cac38f9c6aa0d0b120798fe1
         __M_writer = context.writer()
         __M_writer('\r\n<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n        <link rel="icon" href="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
@@ -177,10 +156,6 @@ def render_right_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-<<<<<<< HEAD
-{"filename": "C:/Users/the_m/Desktop/intex_website/mysite/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 2, "20": 0, "38": 2, "39": 7, "40": 7, "45": 8, "46": 11, "47": 11, "48": 11, "49": 12, "50": 12, "51": 13, "52": 13, "53": 17, "54": 18, "55": 18, "56": 24, "57": 26, "58": 26, "59": 29, "60": 29, "61": 35, "62": 35, "67": 39, "68": 40, "69": 41, "70": 41, "71": 41, "72": 43, "73": 44, "74": 45, "75": 56, "80": 67, "85": 72, "90": 77, "91": 83, "92": 83, "98": 8, "109": 38, "115": 38, "121": 65, "127": 65, "133": 70, "139": 70, "145": 75, "151": 75, "157": 151}}
-=======
 {"filename": "C:/Users/Katrina/Documents/INTEXII/thepack-intex/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 2, "20": 0, "38": 2, "39": 7, "40": 7, "45": 8, "46": 11, "47": 11, "48": 11, "49": 12, "50": 12, "51": 13, "52": 13, "53": 17, "54": 18, "55": 18, "56": 24, "57": 26, "58": 26, "59": 29, "60": 29, "61": 35, "62": 35, "67": 39, "68": 40, "69": 41, "70": 41, "71": 41, "72": 43, "73": 44, "74": 45, "75": 56, "80": 67, "85": 72, "90": 77, "91": 83, "92": 83, "98": 8, "109": 38, "115": 38, "121": 65, "127": 65, "133": 70, "139": 70, "145": 75, "151": 75, "157": 151}}
->>>>>>> ff5af270e52db116cac38f9c6aa0d0b120798fe1
 __M_END_METADATA
 """
