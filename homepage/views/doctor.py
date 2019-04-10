@@ -52,7 +52,7 @@ class doctorCreateForm(forms.Form):
 
     def commit(self):
         newDoc = hmod.Doctor()
-        newDoc.doctorID = (hmod.Doctor.doctorID.filter(max()) + 1)
+        newDoc.doctorID = 0
         newDoc.fName = self.cleaned_data.get('FirstName')
         newDoc.lName = self.cleaned_data.get('LastName')
         newDoc.gender = self.cleaned_data.get('Gender')
