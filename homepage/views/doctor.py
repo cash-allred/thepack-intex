@@ -4,6 +4,9 @@ try:
 except ImportError:
     from django.urls import reverse_lazy
 from django import http
+from django_mako_plus import view_function, jscontext
+from datetime import datetime
+from homepage import models as hmod
 
 
 from base import views as base_views
@@ -14,6 +17,15 @@ from .. import (
     conf
 )
 
+@view_function
+def process_request(request):
+    test = List()
+    hmod.Doctor.objects.add_doctor()
+    
+    context = {
+        jscontext('now'): datetime.now(),
+    }
+    return request.dmp.render('doctor.html', context)
 
 class List(LoginRequiredMixin, base_views.BaseListView):
     """
@@ -37,14 +49,14 @@ class List(LoginRequiredMixin, base_views.BaseListView):
         return context
 
 
+
+
 class Create(LoginRequiredMixin, PermissionRequiredMixin, base_views.BaseCreateView):
     """
     Create a Doctor
     """
     model = models.Doctor
-    permission_required = (
-        'homepage.add_doctor'
-    )
+    permission_required = ('homepage.add_doctor')
     form_class = forms.Doctor
 
     def __init__(self):
@@ -87,9 +99,7 @@ class Update(LoginRequiredMixin, PermissionRequiredMixin, base_views.BaseUpdateV
     """
     model = models.Doctor
     form_class = forms.Doctor
-    permission_required = (
-        'homepage.change_doctor'
-    )
+    permission_required = ('homepage.change_doctor')
 
     def __init__(self):
         super(Update, self).__init__()
@@ -103,9 +113,7 @@ class Delete(LoginRequiredMixin, PermissionRequiredMixin, base_views.BaseDeleteV
     Delete a Doctor
     """
     model = models.Doctor
-    permission_required = (
-        'homepage.delete_doctor'
-    )
+    permission_required = ('homepage.delete_doctor')
 
     def __init__(self):
         super(Delete, self).__init__()
