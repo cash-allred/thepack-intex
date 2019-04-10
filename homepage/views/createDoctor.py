@@ -36,7 +36,7 @@ def process_request(request):
         'form': form,
         jscontext('now'): datetime.now(),
     }
-    return request.dmp.render('doctor.html', context)
+    return request.dmp.render('createDoctor.html', context)
 
 class doctorCreateForm(forms.Form):
     FirstName = forms.CharField(widget=forms.TextInput, label='First Name', required=True)
@@ -64,5 +64,4 @@ class doctorCreateForm(forms.Form):
         newDoc.save()
 
 
-
-
+    
