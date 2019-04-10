@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from catalog import models as cmod
 import math
 
+
 ITEMS_PER_PAGE = 8
 
 @view_function
@@ -22,6 +23,8 @@ def process_request(request, category:cmod.Category=None, page:int=1):
         'numpages': numpages,
     }
     return request.dmp.render('index.html', context)
+
+
 
 
 
