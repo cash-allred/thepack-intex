@@ -1,9 +1,10 @@
 <%inherit file="/homepage/templates/base.htm" />
 
+
 <%block name="content">
     <div class="content">
-        <h3>Presriber Details</h3>
         %for doc in doctor:
+<<<<<<< HEAD
             <div class="doctor-name">${doc.fName} ${doc.lName}</div>
             <table>
                 <tr>
@@ -22,27 +23,93 @@
                     <td>${'Male' if doc.gender == 'M' else 'Female'}</td>
                     <td>${doc.totalPrescriptions}</td>
                 </tr>
+=======
+            <div class="doctor-name"><h2>Dr. ${doc.fName} ${doc.lName}:</h2></div>
+            <h3>Prescriber Details</h3>
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Credentials</th>
+                        <th scope="col">Opioid Presriber</th>
+                        <th scope="col">Specialty</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Total Prescriptions/Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>                
+                        <td>${doc.credentials}</td>
+                        <td>${'Yes' if doc.opioidPrescriber == 1 else 'No'}</td>
+                        <td>${doc.specialty}</td>
+                        <td>${doc.state}</td>
+                        <td>${'Male' if doc.gender == 'M' else 'Female'}</td>
+                        <td>${doc.totalPrescriptions}</td>
+                    </tr>
+                </tbody>
+>>>>>>> 421e7eb94881b5d3951e5561f7170f2c14ab08d0
             </table>
             <!--ADD IF STATEMENT TO MAKE SURE ONLY DATACLERKS HAVE ACCESS-->
             <a href="/homepage/updateDoctor/${doc.doctorID}"> Update Doctor</a>
         %endfor
-
-        <h3>Presriber Drug Prescriptions</h3>
-        <table>
+        <h3>Prescriber Drug Prescriptions</h3>
+        <table class="table">
+            <thead class="thead-light">
                 <tr>
+<<<<<<< HEAD
                     <th>Drug Name</th>
                     <th>Amount Prescribed</th>
                     <th>Average Prescribed in the Country</th>
+=======
+                    
+                    <th scope="col">Drug Name</th>
+                    <th scope="col">Amount Prescribed</th>
+                    <th scope="col">Average Prescribed in the Country</th>
+>>>>>>> 421e7eb94881b5d3951e5561f7170f2c14ab08d0
                 </tr>
+            </thead>
+            <tbody>
+                <% i = 0 %>
                 %for script in prescriptions:
                 <tr>                
                     <td>${script.drugName.drugName}</td>
                     <td>${script.quantity}</td>
-                    <td>${average[script.drugName]}
+                    <td><strong>${avgs1[i][18:23]}</strong></td>
                 </tr>
+                <% i += 1 %>
                 %endfor
-            </table>
-        
-
+            </tbody>
+        </table>
+        <h3>Top 5 Related Doctors:</h3>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Doctor ID:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>${relusers[37]}</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>${relusers[39]}</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>${relusers[41]}</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>${relusers[43]}</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>${relusers[45]}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </%block>

@@ -3,14 +3,35 @@
 
 <%block name="content">
     <div class="content">
-        <h3>This is the Drug Page</h3>
-    </div>
-    <div>
-        <ul id="limheight">
-            %for object in hmod.Drug.objects.all():
-                <li><a href="#">${object.drugName}</a></li>
-            %endfor 
-        </ul>
         
     </div>
+    <div id="catalog">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Drug Name</th>
+                <th scope="col">Opioid(T/F)</th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            %for d in drugs:
+                <tr>
+                    <td>${ d.drugName }</td>
+                    <td>${ 'T' if d.isOpioid == 1 else 'F' }</td>
+                    <td><a  class="btn btn-primary" href="/drugs/details/${d.id}" role="button">Details</a><td>
+                </tr>
+            %endfor
+        </tbody>
+    </table>
+    </div>
+</%block>
+
+<%block name="right_content">
+    <form method="POST">
+        <table>
+            ${ form.as_table() }
+        </table>
+        <input type="submit" value="Search"> 
+    </form>
 </%block>

@@ -2,10 +2,11 @@
 
 <%block name="content">
     <div class="content">
-        <h3>Here are the Doctors!</h3>
+        
     </div>
 
     <div id="catalog">
+<<<<<<< HEAD
     <table>
         <tr>
             <th>Doctor ID</th>
@@ -13,19 +14,36 @@
             <th>Details</th>
         </tr>
         %for doctor in doctors:
-            <span class="product-container" data-product-id="${ doctor.doctorID }"></span>
+=======
+    <table class="table table-hover">
+        <thead>
+>>>>>>> 0ced9b62d0dcc6498607bf9f04ae1c70f1f4696f
             <tr>
-                <td>${ doctor.doctorID }</td>
-                <td>${ doctor.fName } ${ doctor.lName }</td>
-                <td><a href="/prescribers/details/${doctor.doctorID}">Details</a><td>
+                <th scope="col">Doctor ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Details</th>
             </tr>
-        %endfor
-
+        </thead>
+        <tbody>
+            <% i = 1 %>
+            %for doctor in doctors:
+                <span class="product-container" data-product-id="${ doctor.doctorID }"></span>
+                <tr>
+                    <td>${ doctor.doctorID }</td>
+                    <td>${ doctor.fName } ${ doctor.lName }</td>
+                    <td><a  class="btn btn-primary" href="/prescribers/details/${doctor.doctorID}" role="button">Details</a><td>
+                </tr>
+                <% i += 1 %>
+            %endfor
+        </tbody>
     </table>
     </div>
 </%block>
 
 <%block name="right_content">
+    <br>
+    <h3>Doctor Search</h3>
+    <br>
     <form method="POST">
         <table>
             ${ form.as_table() }
