@@ -4,8 +4,8 @@
 
 <%block name="content">
 
-    %for doc in doctor:
-            <div class="doctor-name">${doc.fName} ${doc.lName}</div>
+    <!--%for doc in doctor:-->
+            <div class="doctor-name">${doctor.fName} ${doctor.lName}</div>
             <table>
                 <tr>
                     <th>Credentials</th>
@@ -16,15 +16,15 @@
                     <th>Total Prescriptions/Year</th>
                 </tr>
                 <tr>                
-                    <td>${doc.credentials}</td>
-                    <td>${'Yes' if doc.opioidPrescriber == 1 else 'No'}</td>
-                    <td>${doc.specialty}</td>
-                    <td>${doc.state}</td>
-                    <td>${'Male' if doc.gender == 'M' else 'Female'}</td>
-                    <td>${doc.totalPrescriptions}</td>
+                    <td>${doctor.credentials}</td>
+                    <td>${'Yes' if doctor.opioidPrescriber == 1 else 'No'}</td>
+                    <td>${doctor.specialty}</td>
+                    <td>${doctor.state}</td>
+                    <td>${'Male' if doctor.gender == 'M' else 'Female'}</td>
+                    <td>${doctor.totalPrescriptions}</td>
                 </tr>
             </table>
-        %endfor
+        <!--%endfor-->
         
     <form method="post">
         <table>

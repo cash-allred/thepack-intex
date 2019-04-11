@@ -11,13 +11,23 @@ from django.shortcuts import render, HttpResponseRedirect
 
 @view_function
 def process_request(request, docid):
-    doctor = hmod.Doctor.objects.filter(doctorID=int(docid))
+    doctor = hmod.Doctor.objects.get(doctorID=docid)
+    initial = {
+        'doctorID':doctor.doctorID,
+        'FirstName': doctor.fName,
+        'LastName': doctor.lName,
+        'Gender': doctor.gender,
+        'State': doctor.state,
+        'Credentials': doctor.credentials,
+        'OpioidPrescriber': doctor.opioidPrescriber,
+        'TotalPrescriptions': doctor.totalPrescriptions,
+    }
     if request.method =="POST":
         form=updateDoctor(request.POST)
         form.doctor = updateDoctor.user = request.user
 
         if form.is_valid():
-            form.commit()
+            form.commit(docid)
             return HttpResponseRedirect('/prescribers/')
         form = updateDoctor()
     else:
@@ -25,25 +35,9 @@ def process_request(request, docid):
 
     context={
         'doctor': doctor,
-        'form':form,
+        'form': form,
     }
     return request.dmp.render('updateDoctor.html', context)
-
-#failed experiment
-# class updateDocFirstName(forms.Form):
-#     FirstName = forms.CharField(widget=forms.TextInput, label='First Name', required=False)
-
-#     def clean(self):
-#         return self.cleaned_data
-
-#     def commit(self):
-#         updateDocName = hmod.Doctor.objects.filter(doctorID=doctor.doctorID)
-#         updateDocName.fName = self.cleaned_data('FirstName')
-
-#         updateDocFirstName.update()
-
-#shows up, still not actually updating though
-
 
 class updateDoctor(forms.Form):
     FirstName = forms.CharField(widget=forms.TextInput, label='First Name', required=False)
@@ -59,14 +53,24 @@ class updateDoctor(forms.Form):
     def clean(self):
         return self.cleaned_data
 
-    def commit(self):
-        updateDoc = hmod.Doctor.objects.filter(doctorID=0)
-        updateDoc.fName = self.cleaned_data.get('FirstName')
-        updateDoc.lName = self.cleaned_data.get('LastName')
-        updateDoc.gender = self.cleaned_data.get('Gender')
-        updateDoc.state = self.cleaned_data.get('State')
-        updateDoc.credentials = self.cleaned_data.get('Credentials')
-        updateDoc.opioidPrescriber = self.cleaned_data.get('OpioidPrescriber')
-        updateDoc.save()
+#still doesn't actually update
+    def commit(self, docid):
+        doctor = hmod.Doctor.objects.get(doctorID=docid)
+        if self.cleaned_data.get('FirstName') != "":
+            doctor.fName = self.cleaned_data.get('FirstName')
+        if self.cleaned_data.get('LastName') !="":
+            doctor.lName = self.cleaned_data.get('LastName')
+        if self.cleaned_data.get('Gender') !="":
+            doctor.gender = self.cleaned_data.get('Gender')
+        if self.cleaned_data.get('State') !="":
+            doctor.state = self.cleaned_data.get('State')
+        if self.cleaned_data.get('Credentials') !="":
+            doctor.credentials = self.cleaned_data.get('Credentials')
+        if self.cleaned_data.get('OpioidPrescriber') !="":
+            doctor.opioidPrescriber = self.cleaned_data.get('OpioidPrescriber')
+        if self.cleaned_data.get('TotalPrescriptions') !="":
+            doctor.totalPrescriptions = self.cleaned_data.get('TotalPrescriptions')
+       
+        doctor.save()
 
 
