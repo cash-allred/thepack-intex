@@ -49,7 +49,7 @@ class prescriptionCreateForm(forms.Form):
     def commit(self):
         #create new prescription
         newPrescription = hmod.Prescription()
-        newPrescription.doctorID = self.cleaned_data('docID')
+        newPrescription.doctorID_id = self.cleaned_data('docID')
         newPrescription.drugName = self.cleaned_data('drugName')
         newPrescription.quantity = self.cleaned_data('quantity')
 

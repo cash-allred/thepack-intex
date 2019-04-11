@@ -8,7 +8,7 @@
             <table>
                 <tr>
                     <th>Credentials</th>
-                    <th>Opioid Presriber</th>
+                    <th>Opioid Prescriber</th>
                     <th>Specialty</th>
                     <th>State</th>
                     <th>Gender</th>
@@ -23,13 +23,15 @@
                     <td>${doc.totalPrescriptions}</td>
                 </tr>
             </table>
+            <!--Need to find a way to link this to a specific doctor to update-->
+            <a href="/homepage/updateDoctor/${doc.doctorID}"> Update Doctor</a>
         %endfor
 
         <h3>Presriber Drug Prescriptions</h3>
         <table>
                 <tr>
                     <th>Drug Name</th>
-                    <th>Ammount Prescribed</th>
+                    <th>Amount Prescribed</th>
                     <th>Average Prescribed in the Country</th>
                 </tr>
                 %for script in prescriptions:
