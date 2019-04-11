@@ -39,11 +39,11 @@ def process_request(request, did):
     print(relitems[37], relitems[39], relitems[41], relitems[43], relitems[45])
     
     links = []
-    links.append(hmod.Drug.objects.get(drugName__contains=relitems[37]))
-    links.append(hmod.Drug.objects.get(drugName__contains=relitems[39]))
-    links.append(hmod.Drug.objects.get(drugName__contains=relitems[41]))
-    links.append(hmod.Drug.objects.get(drugName__contains=relitems[43]))
-    links.append(hmod.Drug.objects.get(drugName__contains=relitems[45]))
+    links.append(hmod.Drug.objects.get(drugName__startswith=relitems[37]))
+    links.append(hmod.Drug.objects.get(drugName__startswith=relitems[39]))
+    links.append(hmod.Drug.objects.get(drugName__startswith=relitems[41]))
+    links.append(hmod.Drug.objects.get(drugName__startswith=relitems[43]))
+    links.append(hmod.Drug.objects.get(drugName__startswith=relitems[45]))
     context={
         'drug': drug,
         'doctors': doctors,

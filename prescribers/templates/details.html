@@ -30,7 +30,8 @@
                 </tbody>
             </table>
             <!--ADD IF STATEMENT TO MAKE SURE ONLY DATACLERKS HAVE ACCESS-->
-            <a href="/homepage/updateDoctor/${doc.doctorID}"> Update Doctor</a>
+            <td><a  class="btn btn-primary" href="/homepage/updateDoctor/${doc.doctorID}" role="button">Update Doctor</a><td>
+            <td><a  class="btn btn-primary" href="/homepage/deleteDoctor/${doc.doctorID}" role="button">Delete Doctor</a><td>
         %endfor
         <h3>Prescriber Drug Prescriptions</h3>
         <table class="table">

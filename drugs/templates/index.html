@@ -19,7 +19,7 @@
             %for d in drugs:
                 <tr>
                     <td>${ d.drugName }</td>
-                    <td>${ 'T' if d.isOpioid == 1 else 'F' }</td>
+                    <td>${ 'T' if d.isOpioid == '1' else 'F' }</td>
                     <td><a  class="btn btn-primary" href="/drugs/details/${d.id}" role="button">Details</a><td>
                 </tr>
             %endfor

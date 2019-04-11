@@ -7,13 +7,7 @@ from django.core.exceptions import ValidationError
 from django import forms
 from django.shortcuts import render, HttpResponseRedirect
 
-#CREATE
-#READ: reading and searching capability is taken care of with the @view_function process request
-#UPDATE
-#DELETE
 
-
-#figure out create function!
 @view_function
 def process_request(request):
     doctor = hmod.Doctor
@@ -21,8 +15,8 @@ def process_request(request):
         form=doctorCreateForm(request.POST)
         form.doctor = doctor
         form.user = request.user
-        #if not form.user.is_authenticated:
-            #return HttpResponseRedirect('/account/login/')
+        if not form.user.is_authenticated:
+            return HttpResponseRedirect('/account/login/')
         if form.is_valid():
             form.commit()
             return HttpResponseRedirect('/')
@@ -53,7 +47,7 @@ class doctorCreateForm(forms.Form):
 
     def commit(self):
         newDoc = hmod.Doctor()
-        newDoc.doctorID = 0
+        newDoc.doctorID = self.cleaned_data.get('DoctorID')
         newDoc.fName = self.cleaned_data.get('FirstName')
         newDoc.lName = self.cleaned_data.get('LastName')
         newDoc.gender = self.cleaned_data.get('Gender')

@@ -15,8 +15,10 @@ from django.shortcuts import render, HttpResponseRedirect
 
 #figure out create function!
 @view_function
-def process_request(request):
+def process_request(request, docid):
     prescription = hmod.Prescription
+    drug = hmod.Drug.objects.all()
+    doctor = hmod
     if request.method =="POST":
         form=prescriptionCreateForm(request.POST)
         form.prescription = prescription
@@ -24,7 +26,7 @@ def process_request(request):
         #if not form.user.is_authenticated:
             #return HttpResponseRedirect('/account/login/')
         if form.is_valid():
-            form.commit()
+            form.commit(docid)
             return HttpResponseRedirect('/')
         form = prescriptionCreateForm()
     
@@ -34,30 +36,37 @@ def process_request(request):
     context = {
         'prescription': prescription,
         'form': form,
+        'drug': drug,
         jscontext('now'): datetime.now(),
     }
     return request.dmp.render('prescription.html', context)
 
 class prescriptionCreateForm(forms.Form):
-    docID = forms.IntegerField(label='Doctor ID', required=True)
+    drug = hmod.Drug.objects.all()
+
+    # DRUG_CHOICES = {
+    #     for d in drug:
+    #         print (d.drugName.ID, d.drugName)
+    #         pass    
+    # }
     drugName = forms.CharField(widget=forms.TextInput, label='Drug Name', required=True)
     quantity = forms.IntegerField(label='Quantity', required=True)
     
     def clean(self):
         return self.cleaned_data
 
-    def commit(self):
+    def commit(self, docid):
         #create new prescription
         newPrescription = hmod.Prescription()
-        #not sure what it is, but the following line of code keeps breaking things.. help? It's that TypeError dict problem
-        newPrescription.doctorID_id = hmod.Doctor.objects.get(doctorID=self.cleaned_data('docID'))
-        newPrescription.drugName = self.cleaned_data('drugName')
+        newPrescription.doctorID = docid
+        newPrescription.drugName.id = self.cleaned_data('drugName')
         newPrescription.quantity = self.cleaned_data('quantity')
 
         newPrescription.save()
         
         #update prescription total for doctor
         updatedDocPrescriptions = hmod.Doctor.objects.get(doctorID=docID)
+
         updatedDocPrescriptions.totalPrescriptions += self.cleaned_data('quantity')
         updatedDocPrescriptions.save()
 
