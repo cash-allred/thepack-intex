@@ -21,7 +21,6 @@
                 <tr>
                     <td>${ doctor.doctorID }</td>
                     <td>${ doctor.fName } ${ doctor.lName }</td>
-                    <td><a  class="btn btn-primary" href="/prescribers/details/${doctor.doctorID}" role="button">Details</a><td>
                 </tr>
                 <% i += 1 %>
             %endfor
@@ -35,9 +34,6 @@
     <h3>Doctor Search</h3>
     <br>
     <form method="POST">
-        <table>
-            ${ form.as_table() }
-        </table>
-        <input type="submit" value="Search"> 
+        <input type="submit" class="btn btn-primary" value="Search"> 
     </form>
 </%block>

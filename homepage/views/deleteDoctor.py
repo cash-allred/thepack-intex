@@ -11,45 +11,36 @@ from django.shortcuts import render, HttpResponseRedirect
 
 @view_function
 def process_request(request, docid):
-    doctor = hmod.Doctor.objects.filter(doctorID=int(docid))
+    doctor = hmod.Doctor.objects.get(doctorID=docid)
+    initial = {
+        'doctorID':doctor.doctorID,
+        'FirstName': doctor.fName,
+        'LastName': doctor.lName,
+        'Gender': doctor.gender,
+        'State': doctor.state,
+        'Credentials': doctor.credentials,
+        'OpioidPrescriber': doctor.opioidPrescriber,
+        'TotalPrescriptions': doctor.totalPrescriptions,
+    }    
     if request.method =="POST":
-        form=updateDoctor(request.POST)
-        form.doctor = updateDoctor.user = request.user
-
-        if form.is_valid():
-            form.commit()
-            return HttpResponseRedirect('/prescribers/')
-        form = updateDoctor()
+        form=deleteDoctor(request.POST)
+        form.delete(docid)
+        form.save()
+        # if form.is_valid():
+        #     form.commit()
+        #     return HttpResponseRedirect('/prescribers/')
+        # form = deleteDoctor(docid)
     else:
-        form = updateDoctor()
+        form = deleteDoctor(docid)
 
     context={
         'doctor': doctor,
         'form':form,
     }
-    return request.dmp.render('updateDoctor.html', context)
+    return request.dmp.render('deleteDoctor.html', context)
 
 
 class deleteDoctor(forms.Form):
-    
-    def delete(self):
+    def delete(self, docid):
         deleteDoc = hmod.Doctor.objects.filter(doctorID=docid)
         deleteDoc.delete()
-
-
-@view_function
-def process_request(request):
-    doctor = request.()
-    print('>>>>>>>>HELLO>>>>>')
-    si = cmod.SaleItem.objects.filter(sale=cart)
-
-    context = {
-        'cart':cart,
-        'si': si,
-    }
-
-    return request.dmp.render('/prescribers.html', context)
-
-def remove(self, product:cmod.Product):
-    print('made it')
-    pass
