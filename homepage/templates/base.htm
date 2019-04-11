@@ -4,8 +4,8 @@
 <html>
     <meta charset="UTF-8">
     <head>
-        <link rel="icon" href="${ STATIC_URL }homepage/media/favicon.ico">
-        <title>Jedi &mdash; <%block name="title"></%block></title>
+        <link rel="icon" href="${ STATIC_URL }homepage/media/circle.jpg">
+        <title>OTF &mdash; <%block name="title"></%block></title>
 
         ## add any site-wide scripts or CSS here; for example, jquery:
         <script src="${ STATIC_URL }homepage/media/jquery-3.3.1.js"></script>
@@ -74,16 +74,11 @@
 
         <main>
             <div id="site_left">
-                <%block name="left_menu">
+                <%block name="left_content">
                 </%block>
             </div>
             <div id="site_center">
                 <%block name="content">
-
-                </%block>
-            </div>
-            <div id="site_right">
-                <%block name="right_content">
 
                 </%block>
             </div>

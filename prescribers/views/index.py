@@ -18,6 +18,7 @@ def process_request(request):
         if form.is_valid():
             doctors = hmod.Doctor.objects.filter(fName__contains=form.cleaned_data['firstName'])
             doctors = doctors.filter(lName__contains=form.cleaned_data['lastName'])
+            doctors = doctors.filter(opioidPrescriber__contains=form.cleaned_data['oPrescriber'])
             doctors = doctors.filter(gender__contains=form.cleaned_data['gender'])
             doctors = doctors.filter(state__contains=form.cleaned_data['state'])
             doctors = doctors.filter(credentials__contains=form.cleaned_data['credentials'])
@@ -29,7 +30,7 @@ def process_request(request):
     form = doctorSearchForm() 
     context={
         'doctors': doctors,
-        'form':form,
+        'form': form,
         #'page': page,
         #'numpages': numpages,
     }
@@ -38,6 +39,7 @@ def process_request(request):
 class doctorSearchForm(forms.Form):
     firstName = forms.CharField(widget=forms.TextInput, label='First Name', required=False)
     lastName = forms.CharField(widget=forms.TextInput, label='Last Name', required=False)
+    oPrescriber = forms.ChoiceField(choices=[('1','True'),('0','False'),('','Null')], label='Opioid Prescriber', required=False)
     gender = forms.ChoiceField(choices=[('M','Male'),('F','Female'),('','Null')], required=False)
     credentials = forms.ChoiceField(choices=[('MD','MD'),('DO','DO'),('DMD','DMD'),('NP','NP'),('DDS','DDS'),('PA','PA'),('MED','MED'),('LPC','LPC'),('RN','RN'),('OD','OD'),('','Null')], required=False)
     state = forms.CharField(widget=forms.TextInput, required=False)

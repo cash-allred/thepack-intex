@@ -1,6 +1,7 @@
 <%inherit file="app_base.htm" />
 <%! from homepage import models as hmod %>
 
+<%block name="title">Drug Search</%block>
 <%block name="content">
     <div class="content">
         
@@ -18,7 +19,7 @@
             %for d in drugs:
                 <tr>
                     <td>${ d.drugName }</td>
-                    <td>${ 'T' if d.isOpioid == 1 else 'F' }</td>
+                    <td>${ 'T' if d.isOpioid == '1' else 'F' }</td>
                     <td><a  class="btn btn-primary" href="/drugs/details/${d.id}" role="button">Details</a><td>
                 </tr>
             %endfor
@@ -27,7 +28,7 @@
     </div>
 </%block>
 
-<%block name="right_content">
+<%block name="left_content">
     <form method="POST">
         <table>
             ${ form.as_table() }

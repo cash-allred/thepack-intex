@@ -1,5 +1,6 @@
 <%inherit file="/homepage/templates/base.htm" />
 
+<%block name="title">Dr. Details</%block>
 
 <%block name="content">
     <div class="content">
@@ -35,11 +36,10 @@
         <h3>Prescriber Drug Prescriptions</h3>
         <table class="table">
             <thead class="thead-light">
-                <tr>
-                    
                     <th scope="col">Drug Name</th>
                     <th scope="col">Amount Prescribed</th>
                     <th scope="col">Average Prescribed in the Country</th>
+                    <th scope="col">Details</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,6 +49,7 @@
                     <td>${script.drugName.drugName}</td>
                     <td>${script.quantity}</td>
                     <td><strong>${avgs1[i][18:23]}</strong></td>
+                    <td><a class="btn btn-primary" href="/drugs/details/${script.drugName.id}" role="button">Details</a><td>
                 </tr>
                 <% i += 1 %>
                 %endfor
@@ -60,28 +61,34 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Doctor ID:</th>
+                    <th scope="col">Details</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th scope="row">1</th>
                     <td>${relusers[37]}</td>
+                    <td><a  class="btn btn-primary" href="/prescribers/details/${relusers[37]}" role="button">Details</a><td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
                     <td>${relusers[39]}</td>
+                    <td><a  class="btn btn-primary" href="/prescribers/details/${relusers[39]}" role="button">Details</a><td>
                 </tr>
                 <tr>
                     <th scope="row">3</th>
                     <td>${relusers[41]}</td>
+                    <td><a  class="btn btn-primary" href="/prescribers/details/${relusers[39]}" role="button">Details</a><td>
                 </tr>
                 <tr>
                     <th scope="row">4</th>
                     <td>${relusers[43]}</td>
+                    <td><a  class="btn btn-primary" href="/prescribers/details/${relusers[39]}" role="button">Details</a><td>
                 </tr>
                 <tr>
                     <th scope="row">5</th>
                     <td>${relusers[45]}</td>
+                    <td><a  class="btn btn-primary" href="/prescribers/details/${relusers[39]}" role="button">Details</a><td>
                 </tr>
             </tbody>
         </table>

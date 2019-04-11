@@ -59,8 +59,9 @@ main #site_left {
   position: absolute;
   left: 0;
   top: 0;
-  width: 200px;
+  width: 350px;
   min-height: 100%;
+  color: white;
 }
 main #site_right {
   position: absolute;
@@ -70,8 +71,7 @@ main #site_right {
   height: 100%;
 }
 main #site_center {
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 350px;
   height: 100%;
   position: relative;
 }
