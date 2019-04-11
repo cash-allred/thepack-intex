@@ -1,5 +1,6 @@
 <%inherit file="/homepage/templates/base.htm" />
 
+
 <%block name="content">
     <div class="content">
         <h3>Presriber Details</h3>
@@ -32,11 +33,17 @@
                 <th>Ammount Prescribed</th>
                 <th>Average Prescribed in the Country</th>
             </tr>
+            
             %for script in prescriptions:
             <tr>                
                 <td>${script.drugName.drugName}</td>
                 <td>${script.quantity}</td>
-                <td>${average[script.drugName]}
+                <td>${average[script.drugName]}</td>
+            </tr>
+            %endfor
+            %for value in avgs1:
+            <tr>                
+                <td>${value[18:23]}</td>
             </tr>
             %endfor
         </table>
