@@ -13,7 +13,7 @@ ITEMS_PER_PAGE = 8
 
 @view_function
 def process_request(request, did):
-    # drug = hmod.Drug.objects.get(id=did)
+    drug = hmod.Drug.objects.get(id=did)
     doctors = hmod.Prescription.objects.filter(drugName_id=did)
     doctors = doctors.order_by('-quantity')
     
