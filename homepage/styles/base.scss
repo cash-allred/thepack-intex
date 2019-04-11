@@ -64,8 +64,9 @@ main {
         position: absolute; 
         left: 0;
         top: 0;
-        width: $side_col_width;
+        width: 350px;   
         min-height: 100%;
+        color: white;
     }
 
     #site_right{
@@ -77,8 +78,7 @@ main {
     }
 
     #site_center{
-        margin-left: $side_col_width;
-        margin-right: $side_col_width;
+        margin-left: 350px;
         height: 100%;
         position: relative;
     }
