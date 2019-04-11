@@ -13,15 +13,15 @@ from django.shortcuts import render, HttpResponseRedirect
 def process_request(request, docid):
     doctor = hmod.Doctor.objects.filter(doctorID=int(docid))
     if request.method =="POST":
-        form=updateDoctorForm(request.POST)
-        form.doctor = updateDoctorForm.user = request.user
+        form=updateDoctor(request.POST)
+        form.doctor = updateDoctor.user = request.user
 
         if form.is_valid():
             form.commit()
             return HttpResponseRedirect('/prescribers/')
-        form = updateDoctorForm()
+        form = updateDoctor()
     else:
-        form = updateDoctorForm()
+        form = updateDoctor()
 
     context={
         'doctor': doctor,
@@ -29,8 +29,23 @@ def process_request(request, docid):
     }
     return request.dmp.render('updateDoctor.html', context)
 
+#failed experiment
+# class updateDocFirstName(forms.Form):
+#     FirstName = forms.CharField(widget=forms.TextInput, label='First Name', required=False)
 
-class updateDoctorForm(forms.Form):
+#     def clean(self):
+#         return self.cleaned_data
+
+#     def commit(self):
+#         updateDocName = hmod.Doctor.objects.filter(doctorID=doctor.doctorID)
+#         updateDocName.fName = self.cleaned_data('FirstName')
+
+#         updateDocFirstName.update()
+
+#shows up, still not actually updating though
+
+
+class updateDoctor(forms.Form):
     FirstName = forms.CharField(widget=forms.TextInput, label='First Name', required=False)
     LastName = forms.CharField(widget=forms.TextInput, label='Last Name', required=False)
     Gender = forms.ChoiceField(choices=hmod.Doctor.STATUS_CHOICES)
@@ -38,7 +53,7 @@ class updateDoctorForm(forms.Form):
     Credentials = forms.ChoiceField(choices=[('MD','MD'),('DO','DO'),('DMD','DMD'),('NP','NP'),('DDS','DDS'),('PA','PA'),('MED','MED'),('LPC','LPC'),('RN','RN'),('OD','OD'),('','Null')], required=False, label="Credentials")
     Specialty = forms.CharField(widget=forms.TextInput, required=False)
     OpioidPrescriber = forms.ChoiceField(choices=hmod.Doctor.OPIOID_CHOICES, label='Opioid Prescriber')
-    TotalPrescriptions = forms.IntegerField(required=False)
+    TotalPrescriptions = forms.IntegerField(required=False, label = "Total Prescriptions")
 
 
     def clean(self):
@@ -52,6 +67,6 @@ class updateDoctorForm(forms.Form):
         updateDoc.state = self.cleaned_data.get('State')
         updateDoc.credentials = self.cleaned_data.get('Credentials')
         updateDoc.opioidPrescriber = self.cleaned_data.get('OpioidPrescriber')
+        updateDoc.save()
 
-        updateDoc.update()
 

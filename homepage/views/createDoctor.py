@@ -39,6 +39,7 @@ def process_request(request):
     return request.dmp.render('createDoctor.html', context)
 
 class doctorCreateForm(forms.Form):
+    DoctorID = forms.IntegerField(required=True, label="Doctor ID")
     FirstName = forms.CharField(widget=forms.TextInput, label='First Name', required=True)
     LastName = forms.CharField(widget=forms.TextInput, label='Last Name', required=True)
     Gender = forms.ChoiceField(choices=hmod.Doctor.STATUS_CHOICES)
