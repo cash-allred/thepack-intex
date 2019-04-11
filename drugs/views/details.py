@@ -16,6 +16,7 @@ def process_request(request, did):
     drug = hmod.Drug.objects.get(id=did)
     doctors = hmod.Prescription.objects.filter(drugName_id=did)
     doctors = doctors.order_by('-quantity')
+    
    
 
     url = "https://ussouthcentral.services.azureml.net/workspaces/e1fc1ce7a0a943dd84acf96dedd87e36/services/6c3f820a2e5144c78b6e7751773a4a8c/execute"
@@ -36,12 +37,19 @@ def process_request(request, did):
     str = response.text
     relitems = str.split('"')
     print(relitems[37], relitems[39], relitems[41], relitems[43], relitems[45])
-
-
+    
+    links = []
+    links.append(hmod.Drug.objects.get(drugName__contains=relitems[37]))
+    links.append(hmod.Drug.objects.get(drugName__contains=relitems[39]))
+    links.append(hmod.Drug.objects.get(drugName__contains=relitems[41]))
+    links.append(hmod.Drug.objects.get(drugName__contains=relitems[43]))
+    links.append(hmod.Drug.objects.get(drugName__contains=relitems[45]))
     context={
         'drug': drug,
         'doctors': doctors,
         'relitems': relitems,
+        'links': links,
     }
+    
     return request.dmp.render('details.html', context)
 
