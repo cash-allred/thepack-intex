@@ -49,7 +49,8 @@ class prescriptionCreateForm(forms.Form):
     def commit(self):
         #create new prescription
         newPrescription = hmod.Prescription()
-        newPrescription.doctorID = self.cleaned_data('docID')
+        #not sure what it is, but the following line of code keeps breaking things.. help? It's that TypeError dict problem
+        newPrescription.doctorID_id = hmod.Doctor.objects.get(doctorID=self.cleaned_data('docID'))
         newPrescription.drugName = self.cleaned_data('drugName')
         newPrescription.quantity = self.cleaned_data('quantity')
 

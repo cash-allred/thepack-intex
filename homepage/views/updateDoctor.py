@@ -11,37 +11,66 @@ from django.shortcuts import render, HttpResponseRedirect
 
 @view_function
 def process_request(request, docid):
-    
-    if request.method == "POST":
-    #clean the form and stuff, remove the line of code below
-        form=doctorSearchForm(request.POST)
-        if form.is_valid():
-            doctors = hmod.Doctor.objects.filter(fName__contains=form.cleaned_data['firstName'])
-            doctors = doctors.filter(lName__contains=form.cleaned_data['lastName'])
-            doctors = doctors.filter(gender__contains=form.cleaned_data['gender'])
-            doctors = doctors.filter(state__contains=form.cleaned_data['state'])
-            doctors = doctors.filter(credentials__contains=form.cleaned_data['credentials'])
-            doctors = doctors.filter(specialty__contains=form.cleaned_data['specialty'])
-    else:
-        form=updateDoctorForm() = ""#hmod.Doctor.objects.all()
-    #numpages = math.ceil(doctors.count()/ ITEMS_PER_PAGE)
-    #doctors = doctors[(page-1) * ITEMS_PER_PAGE: page * ITEMS_PER_PAGE]
-    form = doctorSearchForm() 
-    context={
-        'doctors': doctors,
-        'form':form,
-        #'page': page,
-        #'numpages': numpages,
+    doctor = hmod.Doctor.objects.get(doctorID=docid)
+    initial = {
+        'doctorID':doctor.doctorID,
+        'FirstName': doctor.fName,
+        'LastName': doctor.lName,
+        'Gender': doctor.gender,
+        'State': doctor.state,
+        'Credentials': doctor.credentials,
+        'OpioidPrescriber': doctor.opioidPrescriber,
+        'TotalPrescriptions': doctor.totalPrescriptions,
     }
-    return request.dmp.render('index.html', context)
+    if request.method =="POST":
+        form=updateDoctor(request.POST)
+        form.doctor = updateDoctor.user = request.user
 
-class doctorSearchForm(forms.Form):
-    firstName = forms.CharField(widget=forms.TextInput, label='First Name', required=False)
-    lastName = forms.CharField(widget=forms.TextInput, label='Last Name', required=False)
-    gender = forms.ChoiceField(choices=[('M','Male'),('F','Female'),('','Null')], required=False)
-    credentials = forms.ChoiceField(choices=[('MD','MD'),('DO','DO'),('DMD','DMD'),('NP','NP'),('DDS','DDS'),('PA','PA'),('MED','MED'),('LPC','LPC'),('RN','RN'),('OD','OD'),('','Null')], required=False)
-    state = forms.CharField(widget=forms.TextInput, required=False)
-    specialty = forms.CharField(widget=forms.TextInput, required=False)
+        if form.is_valid():
+            form.commit(docid)
+            return HttpResponseRedirect('/prescribers/')
+        form = updateDoctor()
+    else:
+        form = updateDoctor()
+
+    context={
+        'doctor': doctor,
+        'form': form,
+    }
+    return request.dmp.render('updateDoctor.html', context)
+
+class updateDoctor(forms.Form):
+    FirstName = forms.CharField(widget=forms.TextInput, label='First Name', required=False)
+    LastName = forms.CharField(widget=forms.TextInput, label='Last Name', required=False)
+    Gender = forms.ChoiceField(choices=hmod.Doctor.STATUS_CHOICES)
+    State = forms.CharField(widget=forms.TextInput, required=False)
+    Credentials = forms.ChoiceField(choices=[('MD','MD'),('DO','DO'),('DMD','DMD'),('NP','NP'),('DDS','DDS'),('PA','PA'),('MED','MED'),('LPC','LPC'),('RN','RN'),('OD','OD'),('','Null')], required=False, label="Credentials")
+    Specialty = forms.CharField(widget=forms.TextInput, required=False)
+    OpioidPrescriber = forms.ChoiceField(choices=hmod.Doctor.OPIOID_CHOICES, label='Opioid Prescriber')
+    TotalPrescriptions = forms.IntegerField(required=False, label = "Total Prescriptions")
+
 
     def clean(self):
         return self.cleaned_data
+
+#still doesn't actually update
+    def commit(self, docid):
+        doctor = hmod.Doctor.objects.get(doctorID=docid)
+        if self.cleaned_data.get('FirstName') != "":
+            doctor.fName = self.cleaned_data.get('FirstName')
+        if self.cleaned_data.get('LastName') !="":
+            doctor.lName = self.cleaned_data.get('LastName')
+        if self.cleaned_data.get('Gender') !="":
+            doctor.gender = self.cleaned_data.get('Gender')
+        if self.cleaned_data.get('State') !="":
+            doctor.state = self.cleaned_data.get('State')
+        if self.cleaned_data.get('Credentials') !="":
+            doctor.credentials = self.cleaned_data.get('Credentials')
+        if self.cleaned_data.get('OpioidPrescriber') !="":
+            doctor.opioidPrescriber = self.cleaned_data.get('OpioidPrescriber')
+        if self.cleaned_data.get('TotalPrescriptions') !="":
+            doctor.totalPrescriptions = self.cleaned_data.get('TotalPrescriptions')
+       
+        doctor.save()
+
+

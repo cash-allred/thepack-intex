@@ -4,6 +4,28 @@
 
 <%block name="content">
 
+    <!--%for doc in doctor:-->
+            <div class="doctor-name">${doctor.fName} ${doctor.lName}</div>
+            <table>
+                <tr>
+                    <th>Credentials</th>
+                    <th>Opioid Presriber</th>
+                    <th>Specialty</th>
+                    <th>State</th>
+                    <th>Gender</th>
+                    <th>Total Prescriptions/Year</th>
+                </tr>
+                <tr>                
+                    <td>${doctor.credentials}</td>
+                    <td>${'Yes' if doctor.opioidPrescriber == 1 else 'No'}</td>
+                    <td>${doctor.specialty}</td>
+                    <td>${doctor.state}</td>
+                    <td>${'Male' if doctor.gender == 'M' else 'Female'}</td>
+                    <td>${doctor.totalPrescriptions}</td>
+                </tr>
+            </table>
+        <!--%endfor-->
+        
     <form method="post">
         <table>
             ${ form.as_table() }
