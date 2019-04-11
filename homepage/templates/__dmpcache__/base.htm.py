@@ -5,10 +5,10 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1555003630.4008863
+_modified_time = 1555003626.3763251
 _enable_loop = True
 _template_filename = 'C:/Users/USER/intex2/thepack-intex/homepage/templates/base.htm'
-_template_uri = '/homepage/templates/base.htm'
+_template_uri = 'base.htm'
 _source_encoding = 'utf-8'
 import django_mako_plus
 import django.utils.html
@@ -145,6 +145,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/USER/intex2/thepack-intex/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 2, "20": 0, "36": 2, "37": 7, "38": 7, "43": 8, "44": 11, "45": 11, "46": 11, "47": 12, "48": 12, "49": 13, "50": 13, "51": 17, "52": 18, "53": 18, "54": 24, "55": 26, "56": 26, "57": 29, "58": 29, "59": 35, "60": 35, "61": 38, "62": 38, "63": 41, "64": 41, "65": 44, "66": 44, "67": 47, "68": 47, "73": 51, "74": 52, "75": 53, "76": 53, "77": 53, "78": 55, "79": 56, "80": 57, "81": 68, "86": 78, "91": 83, "92": 89, "93": 89, "99": 8, "110": 50, "116": 50, "122": 77, "128": 77, "134": 81, "140": 81, "146": 140}}
+{"filename": "C:/Users/USER/intex2/thepack-intex/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 2, "20": 0, "36": 2, "37": 7, "38": 7, "43": 8, "44": 11, "45": 11, "46": 11, "47": 12, "48": 12, "49": 13, "50": 13, "51": 17, "52": 18, "53": 18, "54": 24, "55": 26, "56": 26, "57": 29, "58": 29, "59": 35, "60": 35, "61": 38, "62": 38, "63": 41, "64": 41, "65": 44, "66": 44, "67": 47, "68": 47, "73": 51, "74": 52, "75": 53, "76": 53, "77": 53, "78": 55, "79": 56, "80": 57, "81": 68, "86": 78, "91": 83, "92": 89, "93": 89, "99": 8, "110": 50, "116": 50, "122": 77, "128": 77, "134": 81, "140": 81, "146": 140}}
 __M_END_METADATA
 """
