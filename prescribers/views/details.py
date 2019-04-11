@@ -20,7 +20,6 @@ def process_request(request, docid):
     prescriptions = hmod.Prescription.objects.filter(doctorID=int(docid))
     average = {}
     avgs1 = []
-    ave = []
     str1 = str
     str2 = str
     for script in prescriptions:

@@ -32,28 +32,23 @@
                 <th>Ammount Prescribed</th>
                 <th>Average Prescribed in the Country</th>
             </tr>
-            
+            <% i = 0 %>
             %for script in prescriptions:
             <tr>                
                 <td>${script.drugName.drugName}</td>
                 <td>${script.quantity}</td>
-                <td>${average[script.drugName]}</td>
+                <td><strong>${avgs1[i][18:23]}</strong></td>
             </tr>
-            %endfor
-            %for value in avgs1:
-            <tr>                
-                <td>${value[18:23]}</td>
-            </tr>
+            <% i += 1 %>
             %endfor
         </table>
         <div>
+            <h3>These are related Doctors based on prescription habits:</h3>
             <p>${relusers[37]}</p>
             <p>${relusers[39]}</p>
             <p>${relusers[41]}</p>
             <p>${relusers[43]}</p>
             <p>${relusers[45]}</p>
         </div>
-        
-
     </div>
 </%block>
