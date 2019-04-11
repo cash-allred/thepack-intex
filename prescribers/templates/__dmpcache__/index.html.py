@@ -5,14 +5,14 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554997287.9966416
+_modified_time = 1554998709.8445132
 _enable_loop = True
 _template_filename = 'C:/Users/USER/intex2/thepack-intex/prescribers/templates/index.html'
 _template_uri = 'index.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
 import django.utils.html
-_exports = ['content', 'right_content']
+_exports = ['title', 'content', 'right_content']
 
 
 def _mako_get_namespace(context, name):
@@ -32,13 +32,20 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         form = context.get('form', UNDEFINED)
         doctors = context.get('doctors', UNDEFINED)
-        def content():
-            return render_content(context._locals(__M_locals))
+        self = context.get('self', UNDEFINED)
+        def title():
+            return render_title(context._locals(__M_locals))
         def right_content():
             return render_right_content(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
+        def content():
+            return render_content(context._locals(__M_locals))
         __M_writer = context.writer()
-        __M_writer('\r\n\r\n')
+        __M_writer('\r\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
+            context['self'].title(**pageargs)
+        
+
+        __M_writer('\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
             context['self'].content(**pageargs)
         
@@ -53,13 +60,25 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
+def render_title(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def title():
+            return render_title(context)
+        __M_writer = context.writer()
+        __M_writer('Prescribers')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        self = context.get('self', UNDEFINED)
         def content():
             return render_content(context)
         doctors = context.get('doctors', UNDEFINED)
-        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n    <div class="content">\r\n        \r\n    </div>\r\n\r\n    <div id="catalog">\r\n    <table class="table table-hover">\r\n        <thead>\r\n            <tr>\r\n                <th scope="col">Doctor ID</th>\r\n                <th scope="col">Name</th>\r\n                <th scope="col">Details</th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n            ')
         i = 1 
@@ -89,10 +108,10 @@ def render_content(context,**pageargs):
 def render_right_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def right_content():
-            return render_right_content(context)
         self = context.get('self', UNDEFINED)
         form = context.get('form', UNDEFINED)
+        def right_content():
+            return render_right_content(context)
         __M_writer = context.writer()
         __M_writer('\r\n    <br>\r\n    <h3>Doctor Search</h3>\r\n    <br>\r\n    <form method="POST">\r\n        <table>\r\n            ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( form.as_table() ))
@@ -104,6 +123,6 @@ def render_right_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/USER/intex2/thepack-intex/prescribers/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "41": 1, "46": 31, "56": 3, "64": 3, "65": 18, "67": 18, "68": 19, "69": 20, "70": 20, "71": 20, "72": 22, "73": 22, "74": 23, "75": 23, "76": 23, "77": 23, "78": 24, "79": 24, "80": 26, "82": 26, "83": 28, "89": 33, "97": 33, "98": 39, "99": 39, "105": 99}}
+{"filename": "C:/Users/USER/intex2/thepack-intex/prescribers/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "43": 1, "48": 2, "53": 31, "63": 2, "69": 2, "75": 3, "83": 3, "84": 18, "86": 18, "87": 19, "88": 20, "89": 20, "90": 20, "91": 22, "92": 22, "93": 23, "94": 23, "95": 23, "96": 23, "97": 24, "98": 24, "99": 26, "101": 26, "102": 28, "108": 33, "116": 33, "117": 39, "118": 39, "124": 118}}
 __M_END_METADATA
 """

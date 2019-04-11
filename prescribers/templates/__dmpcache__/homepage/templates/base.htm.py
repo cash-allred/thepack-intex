@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554950679.4807856
+_modified_time = 1554999046.5769672
 _enable_loop = True
 _template_filename = 'C:/Users/USER/intex2/thepack-intex/homepage/templates/base.htm'
 _template_uri = '/homepage/templates/base.htm'
@@ -21,23 +21,23 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def navbar_items():
-            return render_navbar_items(context._locals(__M_locals))
-        def content():
-            return render_content(context._locals(__M_locals))
-        request = context.get('request', UNDEFINED)
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def right_content():
-            return render_right_content(context._locals(__M_locals))
         self = context.get('self', UNDEFINED)
-        def title():
-            return render_title(context._locals(__M_locals))
         def left_menu():
             return render_left_menu(context._locals(__M_locals))
+        def title():
+            return render_title(context._locals(__M_locals))
+        request = context.get('request', UNDEFINED)
+        def content():
+            return render_content(context._locals(__M_locals))
+        def right_content():
+            return render_right_content(context._locals(__M_locals))
+        def navbar_items():
+            return render_navbar_items(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\r\n<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n        <link rel="icon" href="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
-        __M_writer('homepage/media/favicon.ico">\r\n        <title>Jedi &mdash; ')
+        __M_writer('homepage/media/circle.jpg">\r\n        <title>OTF &mdash; ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
             context['self'].title(**pageargs)
         
