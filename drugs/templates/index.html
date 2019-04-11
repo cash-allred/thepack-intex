@@ -19,7 +19,7 @@
                 <tr>
                     <td>${ d.drugName }</td>
                     <td>${ 'T' if d.isOpioid == 1 else 'F' }</td>
-                    <td><a href="/drugs/details/${d.id}">Details</a><td>
+                    <td><a  class="btn btn-primary" href="/drugs/details/${d.id}" role="button">Details</a><td>
                 </tr>
             %endfor
         </tbody>

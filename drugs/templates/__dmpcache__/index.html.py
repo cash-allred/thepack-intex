@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554956714.240366
+_modified_time = 1554997323.14485
 _enable_loop = True
 _template_filename = 'C:/Users/USER/intex2/thepack-intex/drugs/templates/index.html'
 _template_uri = 'index.html'
@@ -32,12 +32,12 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        drugs = context.get('drugs', UNDEFINED)
+        form = context.get('form', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        drugs = context.get('drugs', UNDEFINED)
         def right_content():
             return render_right_content(context._locals(__M_locals))
-        form = context.get('form', UNDEFINED)
         self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n')
@@ -60,10 +60,10 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        self = context.get('self', UNDEFINED)
         def content():
             return render_content(context)
         drugs = context.get('drugs', UNDEFINED)
+        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n    <div class="content">\r\n        \r\n    </div>\r\n    <div id="catalog">\r\n    <table class="table table-hover">\r\n        <thead>\r\n            <tr>\r\n                <th scope="col">Drug Name</th>\r\n                <th scope="col">Opioid(T/F)</th>\r\n                <th scope="col">Details</th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n')
         for d in drugs:
@@ -71,9 +71,9 @@ def render_content(context,**pageargs):
             __M_writer(django_mako_plus.ExpressionPostProcessor(self)( d.drugName ))
             __M_writer('</td>\r\n                    <td>')
             __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'T' if d.isOpioid == 1 else 'F' ))
-            __M_writer('</td>\r\n                    <td><a href="/drugs/details/')
+            __M_writer('</td>\r\n                    <td><a  class="btn btn-primary" href="/drugs/details/')
             __M_writer(django_mako_plus.ExpressionPostProcessor(self)(d.id))
-            __M_writer('">Details</a><td>\r\n                </tr>\r\n')
+            __M_writer('" role="button">Details</a><td>\r\n                </tr>\r\n')
         __M_writer('        </tbody>\r\n    </table>\r\n    </div>\r\n')
         return ''
     finally:
@@ -83,9 +83,9 @@ def render_content(context,**pageargs):
 def render_right_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        self = context.get('self', UNDEFINED)
         def right_content():
             return render_right_content(context)
+        self = context.get('self', UNDEFINED)
         form = context.get('form', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n    <form method="POST">\r\n        <table>\r\n            ')
