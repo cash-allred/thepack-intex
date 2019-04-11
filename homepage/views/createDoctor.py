@@ -36,7 +36,7 @@ def process_request(request):
         'form': form,
         jscontext('now'): datetime.now(),
     }
-    return request.dmp.render('doctor.html', context)
+    return request.dmp.render('createDoctor.html', context)
 
 class doctorCreateForm(forms.Form):
     FirstName = forms.CharField(widget=forms.TextInput, label='First Name', required=True)
@@ -52,7 +52,7 @@ class doctorCreateForm(forms.Form):
 
     def commit(self):
         newDoc = hmod.Doctor()
-        newDoc.doctorID = (hmod.Doctor.doctorID.filter(max()) + 1)
+        newDoc.doctorID = 0
         newDoc.fName = self.cleaned_data.get('FirstName')
         newDoc.lName = self.cleaned_data.get('LastName')
         newDoc.gender = self.cleaned_data.get('Gender')
@@ -64,5 +64,4 @@ class doctorCreateForm(forms.Form):
         newDoc.save()
 
 
-
-
+    

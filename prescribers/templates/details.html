@@ -26,19 +26,26 @@
         %endfor
         <h3>Presriber Drug Prescriptions</h3>
         <table>
-                <tr>
-                    <th>Drug Name</th>
-                    <th>Ammount Prescribed</th>
-                    <th>Average Prescribed in the Country</th>
-                </tr>
-                %for script in prescriptions:
-                <tr>                
-                    <td>${script.drugName.drugName}</td>
-                    <td>${script.quantity}</td>
-                    <td>${average[script.drugName]}
-                </tr>
-                %endfor
-            </table>
+            <tr>
+                <th>Drug Name</th>
+                <th>Ammount Prescribed</th>
+                <th>Average Prescribed in the Country</th>
+            </tr>
+            %for script in prescriptions:
+            <tr>                
+                <td>${script.drugName.drugName}</td>
+                <td>${script.quantity}</td>
+                <td>${average[script.drugName]}
+            </tr>
+            %endfor
+        </table>
+        <div>
+            <p>${relusers[37]}</p>
+            <p>${relusers[39]}</p>
+            <p>${relusers[41]}</p>
+            <p>${relusers[43]}</p>
+            <p>${relusers[45]}</p>
+        </div>
         
 
     </div>

@@ -7,7 +7,7 @@ TAX_RATE = Decimal("0.05")
 # Create your models here.
 
 class Doctor (models.Model):
-    doctorID = models.IntegerField(default=0, primary_key=True)
+    doctorID = models.IntegerField(auto_created=True, primary_key=True)
     fName = models.TextField(default="Doctor First Name")
     lName = models.TextField(default="Doctor Last Name")
     STATUS_CHOICES = [
