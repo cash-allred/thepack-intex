@@ -3,41 +3,70 @@
 <%block name="content">
     <div class="content">
         <h3>Drug Details</h3>
-        <div class="doctor-name">${drug.drugName}</div>
-
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Opioid (T/F)</th>
-            </tr>
-            <tr>                
-                <td>${drug.drugName}</td>
-                <td>${ 'T' if drug.isOpioid == 1 else 'F' }</td>
-            </tr>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Opioid (T/F)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>                
+                    <td>${drug.drugName}</td>
+                    <td>${ 'T' if drug.isOpioid == 1 else 'F' }</td>
+                </tr>
+            </tbody>
         </table>
         <br>
         <br>
         <br>
         <h3>Top Prescribers of ${drug.drugName}</h3>
-        <table>
-            <tr>
-                <th>Doctor ID</th>
-                <th>Ammount Prescribed</th>
-            </tr>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Doctor ID</th>
+                    <th>Ammount Prescribed</th>
+                </tr>
+            </thead>
+            <tbody>
             %for x in range(10):
                 <tr>                
                     <td>${doctors[x].doctorID_id}</td>
                     <td>${doctors[x].quantity}</td>
                 </tr>
             %endfor
+            </tbody>
         </table>
-        <div>
-            <h3>These are related Drugs based on prescription habits:</h3>
-            <p>${relitems[37]}</p>
-            <p>${relitems[39]}</p>
-            <p>${relitems[41]}</p>
-            <p>${relitems[43]}</p>
-            <p>${relitems[45]}</p>
-        </div>
+         <h3>Top 5 Drugs Commonly Prescribed with ${drug.drugName}:</h3>
+         <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Drug Name:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>${relitems[37]}</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>${relitems[39]}</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>${relitems[41]}</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>${relitems[43]}</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>${relitems[45]}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </%block>

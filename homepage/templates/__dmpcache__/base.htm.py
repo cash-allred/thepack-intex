@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554947558.7651572
+_modified_time = 1554950654.1562939
 _enable_loop = True
 _template_filename = 'C:/Users/USER/intex2/thepack-intex/homepage/templates/base.htm'
 _template_uri = 'base.htm'
@@ -21,17 +21,17 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        def navbar_items():
+            return render_navbar_items(context._locals(__M_locals))
+        def content():
+            return render_content(context._locals(__M_locals))
+        request = context.get('request', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def right_content():
             return render_right_content(context._locals(__M_locals))
         self = context.get('self', UNDEFINED)
-        def content():
-            return render_content(context._locals(__M_locals))
         def title():
             return render_title(context._locals(__M_locals))
-        def navbar_items():
-            return render_navbar_items(context._locals(__M_locals))
-        request = context.get('request', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def left_menu():
             return render_left_menu(context._locals(__M_locals))
         __M_writer = context.writer()
@@ -57,9 +57,17 @@ def render_body(context,**pageargs):
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
         __M_writer('homepage/media/otflogo.png" alt="Opioid Task Force Logo">\r\n            </div>\r\n            <nav class="navbar navbar-expand-lg navbar-light bg-light">\r\n                <img class="small_logo" src="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
-        __M_writer('homepage/media/python.png" alt="python" />\r\n                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">\r\n                    <span class="navbar-toggler-icon"></span>\r\n                </button>\r\n                <div class="collapse navbar-collapse" id="navbarSupportedContent">\r\n                    <ul class="navbar-nav mr-auto">\r\n                    <li class="nav-item ')
+        __M_writer('homepage/media/circle.jpg" alt="logo" />\r\n                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">\r\n                    <span class="navbar-toggler-icon"></span>\r\n                </button>\r\n                <div class="collapse navbar-collapse" id="navbarSupportedContent">\r\n                    <ul class="navbar-nav mr-auto">\r\n                    <li class="nav-item ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'index' else ''))
-        __M_writer('">\r\n                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>\r\n                    </li>\r\n                    ')
+        __M_writer('">\r\n                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>\r\n                    </li>\r\n                    <li class="nav-item ')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == '/prescribers/Index' else ''))
+        __M_writer('">\r\n                        <a class="nav-link" href="/prescribers/">Prescribers</a>\r\n                    </li>\r\n                    <li class="nav-item ')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == '/drugs/index/' else ''))
+        __M_writer('">\r\n                        <a class="nav-link" href="/drugs/">Drugs</a>\r\n                    </li>\r\n                    <li class="nav-item ')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'index' else ''))
+        __M_writer('">\r\n                        <a class="nav-link" href="/homepage/dashboard/">Dashboard <span class="sr-only">(current)</span></a>\r\n                    </li>\r\n                    <li class="nav-item ')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'active' if request.dmp.page == 'index' else ''))
+        __M_writer('">\r\n                        <a class="nav-link" href="/homepage/map/">Map <span class="sr-only">(current)</span></a>\r\n                    </li>\r\n                    ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'navbar_items'):
             context['self'].navbar_items(**pageargs)
         
@@ -89,7 +97,7 @@ def render_body(context,**pageargs):
 
         __M_writer('\r\n            </div>\r\n        </main>\r\n\r\n        <footer>\r\n           <div class="footer_text">\r\n            Copyright &copy; ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( datetime.datetime.today().year ))
-        __M_writer(' Cash Allred  \r\n            </div>     \r\n        </footer>\r\n\r\n    </body>\r\n</html>\r\n')
+        __M_writer(' PACK Consulting  \r\n            </div>     \r\n        </footer>\r\n\r\n    </body>\r\n</html>\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -124,7 +132,7 @@ def render_left_menu(context,**pageargs):
         def left_menu():
             return render_left_menu(context)
         __M_writer = context.writer()
-        __M_writer('\r\n                    Left side\r\n                ')
+        __M_writer('\r\n                ')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -136,7 +144,7 @@ def render_content(context,**pageargs):
         def content():
             return render_content(context)
         __M_writer = context.writer()
-        __M_writer('\r\n                    center side\r\n                ')
+        __M_writer('\r\n\r\n                ')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -148,7 +156,7 @@ def render_right_content(context,**pageargs):
         def right_content():
             return render_right_content(context)
         __M_writer = context.writer()
-        __M_writer('\r\n                    right text\r\n                ')
+        __M_writer('\r\n\r\n                ')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -156,6 +164,6 @@ def render_right_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/USER/intex2/thepack-intex/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 2, "20": 0, "38": 2, "39": 7, "40": 7, "45": 8, "46": 11, "47": 11, "48": 11, "49": 12, "50": 12, "51": 13, "52": 13, "53": 17, "54": 18, "55": 18, "56": 24, "57": 26, "58": 26, "59": 29, "60": 29, "61": 35, "62": 35, "67": 39, "68": 40, "69": 41, "70": 41, "71": 41, "72": 43, "73": 44, "74": 45, "75": 56, "80": 67, "85": 72, "90": 77, "91": 83, "92": 83, "98": 8, "109": 38, "115": 38, "121": 65, "127": 65, "133": 70, "139": 70, "145": 75, "151": 75, "157": 151}}
+{"filename": "C:/Users/USER/intex2/thepack-intex/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 2, "20": 0, "38": 2, "39": 7, "40": 7, "45": 8, "46": 11, "47": 11, "48": 11, "49": 12, "50": 12, "51": 13, "52": 13, "53": 17, "54": 18, "55": 18, "56": 24, "57": 26, "58": 26, "59": 29, "60": 29, "61": 35, "62": 35, "63": 38, "64": 38, "65": 41, "66": 41, "67": 44, "68": 44, "69": 47, "70": 47, "75": 51, "76": 52, "77": 53, "78": 53, "79": 53, "80": 55, "81": 56, "82": 57, "83": 68, "88": 78, "93": 83, "98": 88, "99": 94, "100": 94, "106": 8, "117": 50, "123": 50, "129": 77, "135": 77, "141": 81, "147": 81, "153": 86, "159": 86, "165": 159}}
 __M_END_METADATA
 """

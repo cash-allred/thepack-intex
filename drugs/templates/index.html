@@ -3,22 +3,26 @@
 
 <%block name="content">
     <div class="content">
-        <h3>This is the Drug Page</h3>
+        
     </div>
     <div id="catalog">
-    <table>
-        <tr>
-            <th>Drug Name</th>
-            <th>Opioid(T/F)</th>
-            <th>Details</th>
-        </tr>
-        %for d in drugs:
+    <table class="table table-hover">
+        <thead>
             <tr>
-                <td>${ d.drugName }</td>
-                <td>${ 'T' if d.isOpioid == 1 else 'F' }</td>
-                <td><a href="/drugs/details/${d.id}">Details</a><td>
+                <th scope="col">Drug Name</th>
+                <th scope="col">Opioid(T/F)</th>
+                <th scope="col">Details</th>
             </tr>
-        %endfor
+        </thead>
+        <tbody>
+            %for d in drugs:
+                <tr>
+                    <td>${ d.drugName }</td>
+                    <td>${ 'T' if d.isOpioid == 1 else 'F' }</td>
+                    <td><a href="/drugs/details/${d.id}">Details</a><td>
+                </tr>
+            %endfor
+        </tbody>
     </table>
     </div>
 </%block>

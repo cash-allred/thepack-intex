@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554948104.7451525
+_modified_time = 1554957342.3651657
 _enable_loop = True
 _template_filename = 'C:/Users/USER/intex2/thepack-intex/drugs/templates/details.html'
 _template_uri = 'details.html'
@@ -33,10 +33,10 @@ def render_body(context,**pageargs):
         relitems = context.get('relitems', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        range = context.get('range', UNDEFINED)
-        drug = context.get('drug', UNDEFINED)
-        doctors = context.get('doctors', UNDEFINED)
         self = context.get('self', UNDEFINED)
+        range = context.get('range', UNDEFINED)
+        doctors = context.get('doctors', UNDEFINED)
+        drug = context.get('drug', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -54,37 +54,37 @@ def render_content(context,**pageargs):
         relitems = context.get('relitems', UNDEFINED)
         def content():
             return render_content(context)
-        range = context.get('range', UNDEFINED)
-        drug = context.get('drug', UNDEFINED)
-        doctors = context.get('doctors', UNDEFINED)
         self = context.get('self', UNDEFINED)
+        range = context.get('range', UNDEFINED)
+        doctors = context.get('doctors', UNDEFINED)
+        drug = context.get('drug', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\r\n    <div class="content">\r\n        <h3>Drug Details</h3>\r\n        <div class="doctor-name">')
+        __M_writer('\r\n    <div class="content">\r\n        <h3>Drug Details</h3>\r\n        <table class="table">\r\n            <thead class="thead-light">\r\n                <tr>\r\n                    <th>Name</th>\r\n                    <th>Opioid (T/F)</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr>                \r\n                    <td>')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)(drug.drugName))
-        __M_writer('</div>\r\n\r\n        <table>\r\n            <tr>\r\n                <th>Name</th>\r\n                <th>Opioid (T/F)</th>\r\n            </tr>\r\n            <tr>                \r\n                <td>')
-        __M_writer(django_mako_plus.ExpressionPostProcessor(self)(drug.drugName))
-        __M_writer('</td>\r\n                <td>')
+        __M_writer('</td>\r\n                    <td>')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( 'T' if drug.isOpioid == 1 else 'F' ))
-        __M_writer('</td>\r\n            </tr>\r\n        </table>\r\n        <br>\r\n        <br>\r\n        <br>\r\n        <h3>Top Prescribers of ')
+        __M_writer('</td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n        <br>\r\n        <br>\r\n        <br>\r\n        <h3>Top Prescribers of ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)(drug.drugName))
-        __M_writer('</h3>\r\n        <table>\r\n            <tr>\r\n                <th>Doctor ID</th>\r\n                <th>Ammount Prescribed</th>\r\n            </tr>\r\n')
+        __M_writer('</h3>\r\n        <table class="table">\r\n            <thead class="thead-light">\r\n                <tr>\r\n                    <th>Doctor ID</th>\r\n                    <th>Ammount Prescribed</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n')
         for x in range(10):
             __M_writer('                <tr>                \r\n                    <td>')
             __M_writer(django_mako_plus.ExpressionPostProcessor(self)(doctors[x].doctorID_id))
             __M_writer('</td>\r\n                    <td>')
             __M_writer(django_mako_plus.ExpressionPostProcessor(self)(doctors[x].quantity))
             __M_writer('</td>\r\n                </tr>\r\n')
-        __M_writer('        </table>\r\n        <div>\r\n            <h3>These are related Drugs based on prescription habits:</h3>\r\n            <p>')
+        __M_writer('            </tbody>\r\n        </table>\r\n         <h3>Top 5 Drugs Commonly Prescribed with ')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)(drug.drugName))
+        __M_writer(':</h3>\r\n         <table class="table">\r\n            <thead class="thead-light">\r\n                <tr>\r\n                    <th scope="col">#</th>\r\n                    <th scope="col">Drug Name:</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr>\r\n                    <th scope="row">1</th>\r\n                    <td>')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)(relitems[37]))
-        __M_writer('</p>\r\n            <p>')
+        __M_writer('</td>\r\n                </tr>\r\n                <tr>\r\n                    <th scope="row">2</th>\r\n                    <td>')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)(relitems[39]))
-        __M_writer('</p>\r\n            <p>')
+        __M_writer('</td>\r\n                </tr>\r\n                <tr>\r\n                    <th scope="row">3</th>\r\n                    <td>')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)(relitems[41]))
-        __M_writer('</p>\r\n            <p>')
+        __M_writer('</td>\r\n                </tr>\r\n                <tr>\r\n                    <th scope="row">4</th>\r\n                    <td>')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)(relitems[43]))
-        __M_writer('</p>\r\n            <p>')
+        __M_writer('</td>\r\n                </tr>\r\n                <tr>\r\n                    <th scope="row">5</th>\r\n                    <td>')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)(relitems[45]))
-        __M_writer('</p>\r\n        </div>\r\n    </div>\r\n')
+        __M_writer('</td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -92,6 +92,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/USER/intex2/thepack-intex/drugs/templates/details.html", "uri": "details.html", "source_encoding": "utf-8", "line_map": {"29": 0, "41": 1, "51": 3, "62": 3, "63": 6, "64": 6, "65": 14, "66": 14, "67": 15, "68": 15, "69": 21, "70": 21, "71": 27, "72": 28, "73": 29, "74": 29, "75": 30, "76": 30, "77": 33, "78": 36, "79": 36, "80": 37, "81": 37, "82": 38, "83": 38, "84": 39, "85": 39, "86": 40, "87": 40, "93": 87}}
+{"filename": "C:/Users/USER/intex2/thepack-intex/drugs/templates/details.html", "uri": "details.html", "source_encoding": "utf-8", "line_map": {"29": 0, "41": 1, "51": 3, "62": 3, "63": 15, "64": 15, "65": 16, "66": 16, "67": 23, "68": 23, "69": 32, "70": 33, "71": 34, "72": 34, "73": 35, "74": 35, "75": 38, "76": 40, "77": 40, "78": 51, "79": 51, "80": 55, "81": 55, "82": 59, "83": 59, "84": 63, "85": 63, "86": 67, "87": 67, "93": 87}}
 __M_END_METADATA
 """

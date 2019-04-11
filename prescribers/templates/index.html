@@ -2,25 +2,30 @@
 
 <%block name="content">
     <div class="content">
-        <h3>Here are the Doctors!</h3>
+        
     </div>
 
     <div id="catalog">
-    <table>
-        <tr>
-            <th>Doctor ID</th>
-            <th>Name</th>
-            <th>Details</th>
-        </tr>
-        %for doctor in doctors:
-            <span class="product-container" data-product-id="${ doctor.doctorID }"></span>
+    <table class="table table-hover">
+        <thead>
             <tr>
-                <td>${ doctor.doctorID }</td>
-                <td>${ doctor.fName } ${ doctor.lName }</td>
-                <td><a href="/prescribers/details/${doctor.doctorID}">Details</a><td>
+                <th scope="col">Doctor ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Details</th>
             </tr>
-        %endfor
-
+        </thead>
+        <tbody>
+            <% i = 1 %>
+            %for doctor in doctors:
+                <span class="product-container" data-product-id="${ doctor.doctorID }"></span>
+                <tr>
+                    <td>${ doctor.doctorID }</td>
+                    <td>${ doctor.fName } ${ doctor.lName }</td>
+                    <td><a href="/prescribers/details/${doctor.doctorID}">Details</a><td>
+                </tr>
+                <% i += 1 %>
+            %endfor
+        </tbody>
     </table>
     </div>
 </%block>
