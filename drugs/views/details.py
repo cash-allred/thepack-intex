@@ -13,7 +13,7 @@ ITEMS_PER_PAGE = 8
 
 @view_function
 def process_request(request, did):
-    drug = hmod.Drug.objects.get(id=did)
+    # drug = hmod.Drug.objects.get(id=did)
     doctors = hmod.Prescription.objects.filter(drugName_id=did)
     doctors = doctors.order_by('-quantity')
     
@@ -39,11 +39,11 @@ def process_request(request, did):
     print(relitems[37], relitems[39], relitems[41], relitems[43], relitems[45])
     
     links = []
-    links.append(hmod.Drug.objects.get(drugName__contains=relitems[37]))
-    links.append(hmod.Drug.objects.get(drugName__contains=relitems[39]))
-    links.append(hmod.Drug.objects.get(drugName__contains=relitems[41]))
-    links.append(hmod.Drug.objects.get(drugName__contains=relitems[43]))
-    links.append(hmod.Drug.objects.get(drugName__contains=relitems[45]))
+    links.append(hmod.Drug.objects.get(drugName__startswith=relitems[37]))
+    links.append(hmod.Drug.objects.get(drugName__startswith=relitems[39]))
+    links.append(hmod.Drug.objects.get(drugName__startswith=relitems[41]))
+    links.append(hmod.Drug.objects.get(drugName__startswith=relitems[43]))
+    links.append(hmod.Drug.objects.get(drugName__startswith=relitems[45]))
     context={
         'drug': drug,
         'doctors': doctors,
