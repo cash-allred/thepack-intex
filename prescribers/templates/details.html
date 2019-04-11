@@ -4,26 +4,6 @@
 <%block name="content">
     <div class="content">
         %for doc in doctor:
-<<<<<<< HEAD
-            <div class="doctor-name">${doc.fName} ${doc.lName}</div>
-            <table>
-                <tr>
-                    <th>Credentials</th>
-                    <th>Opioid Prescriber</th>
-                    <th>Specialty</th>
-                    <th>State</th>
-                    <th>Gender</th>
-                    <th>Total Prescriptions/Year</th>
-                </tr>
-                <tr>                
-                    <td>${doc.credentials}</td>
-                    <td>${'Yes' if doc.opioidPrescriber == 1 else 'No'}</td>
-                    <td>${doc.specialty}</td>
-                    <td>${doc.state}</td>
-                    <td>${'Male' if doc.gender == 'M' else 'Female'}</td>
-                    <td>${doc.totalPrescriptions}</td>
-                </tr>
-=======
             <div class="doctor-name"><h2>Dr. ${doc.fName} ${doc.lName}:</h2></div>
             <h3>Prescriber Details</h3>
             <table class="table">
@@ -47,7 +27,6 @@
                         <td>${doc.totalPrescriptions}</td>
                     </tr>
                 </tbody>
->>>>>>> 421e7eb94881b5d3951e5561f7170f2c14ab08d0
             </table>
             <!--ADD IF STATEMENT TO MAKE SURE ONLY DATACLERKS HAVE ACCESS-->
             <a href="/homepage/updateDoctor/${doc.doctorID}"> Update Doctor</a>
@@ -56,16 +35,9 @@
         <table class="table">
             <thead class="thead-light">
                 <tr>
-<<<<<<< HEAD
-                    <th>Drug Name</th>
-                    <th>Amount Prescribed</th>
-                    <th>Average Prescribed in the Country</th>
-=======
-                    
                     <th scope="col">Drug Name</th>
                     <th scope="col">Amount Prescribed</th>
                     <th scope="col">Average Prescribed in the Country</th>
->>>>>>> 421e7eb94881b5d3951e5561f7170f2c14ab08d0
                 </tr>
             </thead>
             <tbody>
