@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1555003630.4008863
+_modified_time = 1555005349.5435567
 _enable_loop = True
 _template_filename = 'C:/Users/USER/intex2/thepack-intex/homepage/templates/base.htm'
 _template_uri = '/homepage/templates/base.htm'
@@ -21,16 +21,16 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        self = context.get('self', UNDEFINED)
-        def navbar_items():
-            return render_navbar_items(context._locals(__M_locals))
-        def title():
-            return render_title(context._locals(__M_locals))
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def left_content():
             return render_left_content(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
+        self = context.get('self', UNDEFINED)
+        def title():
+            return render_title(context._locals(__M_locals))
+        def navbar_items():
+            return render_navbar_items(context._locals(__M_locals))
         request = context.get('request', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n        <link rel="icon" href="')

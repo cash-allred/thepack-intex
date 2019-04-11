@@ -5,15 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-<<<<<<< HEAD
-_modified_time = 1555003639.250151
+_modified_time = 1555005719.8773065
 _enable_loop = True
 _template_filename = 'C:/Users/USER/intex2/thepack-intex/homepage/templates/dashboard.html'
-=======
-_modified_time = 1555004473.6004496
-_enable_loop = True
-_template_filename = 'C:/Users/the_m/Desktop/intex_website/mysite/homepage/templates/dashboard.html'
->>>>>>> d31b487aa03192863b6112820e4703e6b89099d7
 _template_uri = 'dashboard.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -36,17 +30,10 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-<<<<<<< HEAD
-        def content():
-            return render_content(context._locals(__M_locals))
-        def title():
-            return render_title(context._locals(__M_locals))
-=======
         def title():
             return render_title(context._locals(__M_locals))
         def content():
             return render_content(context._locals(__M_locals))
->>>>>>> d31b487aa03192863b6112820e4703e6b89099d7
         __M_writer = context.writer()
         __M_writer('\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
@@ -89,10 +76,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-<<<<<<< HEAD
 {"filename": "C:/Users/USER/intex2/thepack-intex/homepage/templates/dashboard.html", "uri": "dashboard.html", "source_encoding": "utf-8", "line_map": {"29": 0, "38": 1, "43": 2, "53": 2, "59": 2, "65": 6, "71": 6, "77": 71}}
-=======
-{"filename": "C:/Users/the_m/Desktop/intex_website/mysite/homepage/templates/dashboard.html", "uri": "dashboard.html", "source_encoding": "utf-8", "line_map": {"29": 0, "38": 1, "43": 2, "53": 2, "59": 2, "65": 6, "71": 6, "77": 71}}
->>>>>>> d31b487aa03192863b6112820e4703e6b89099d7
 __M_END_METADATA
 """

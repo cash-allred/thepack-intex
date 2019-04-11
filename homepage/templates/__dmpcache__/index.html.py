@@ -5,15 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-<<<<<<< HEAD
-_modified_time = 1555003626.2706397
+_modified_time = 1555005346.4240203
 _enable_loop = True
 _template_filename = 'C:/Users/USER/intex2/thepack-intex/homepage/templates/index.html'
-=======
-_modified_time = 1555004468.8841364
-_enable_loop = True
-_template_filename = 'C:/Users/the_m/Desktop/intex_website/mysite/homepage/templates/index.html'
->>>>>>> d31b487aa03192863b6112820e4703e6b89099d7
 _template_uri = 'index.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -36,17 +30,10 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-<<<<<<< HEAD
-        def content():
-            return render_content(context._locals(__M_locals))
-        def title():
-            return render_title(context._locals(__M_locals))
-=======
         def title():
             return render_title(context._locals(__M_locals))
         def content():
             return render_content(context._locals(__M_locals))
->>>>>>> d31b487aa03192863b6112820e4703e6b89099d7
         __M_writer = context.writer()
         __M_writer('\r\n<!--Testing GitHub Comment-->\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
@@ -89,10 +76,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-<<<<<<< HEAD
 {"filename": "C:/Users/USER/intex2/thepack-intex/homepage/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "38": 1, "43": 3, "53": 3, "59": 3, "65": 5, "71": 5, "77": 71}}
-=======
-{"filename": "C:/Users/the_m/Desktop/intex_website/mysite/homepage/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "38": 1, "43": 3, "53": 3, "59": 3, "65": 5, "71": 5, "77": 71}}
->>>>>>> d31b487aa03192863b6112820e4703e6b89099d7
 __M_END_METADATA
 """

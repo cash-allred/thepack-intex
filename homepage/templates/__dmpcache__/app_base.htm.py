@@ -5,15 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-<<<<<<< HEAD
-_modified_time = 1555003626.3174841
+_modified_time = 1555005346.444962
 _enable_loop = True
 _template_filename = 'C:/Users/USER/intex2/thepack-intex/homepage/templates/app_base.htm'
-=======
-_modified_time = 1555004468.9160774
-_enable_loop = True
-_template_filename = 'C:/Users/the_m/Desktop/intex_website/mysite/homepage/templates/app_base.htm'
->>>>>>> d31b487aa03192863b6112820e4703e6b89099d7
 _template_uri = 'app_base.htm'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -83,10 +77,6 @@ def render_left_menu(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-<<<<<<< HEAD
 {"filename": "C:/Users/USER/intex2/thepack-intex/homepage/templates/app_base.htm", "uri": "app_base.htm", "source_encoding": "utf-8", "line_map": {"29": 0, "38": 1, "43": 5, "48": 8, "54": 3, "60": 3, "66": 7, "72": 7, "78": 72}}
-=======
-{"filename": "C:/Users/the_m/Desktop/intex_website/mysite/homepage/templates/app_base.htm", "uri": "app_base.htm", "source_encoding": "utf-8", "line_map": {"29": 0, "38": 1, "43": 5, "48": 8, "54": 3, "60": 3, "66": 7, "72": 7, "78": 72}}
->>>>>>> d31b487aa03192863b6112820e4703e6b89099d7
 __M_END_METADATA
 """

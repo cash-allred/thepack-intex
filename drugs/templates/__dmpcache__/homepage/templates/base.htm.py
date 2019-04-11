@@ -5,15 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-<<<<<<< HEAD
-_modified_time = 1555003635.0124593
+_modified_time = 1555005437.2768958
 _enable_loop = True
 _template_filename = 'C:/Users/USER/intex2/thepack-intex/homepage/templates/base.htm'
-=======
-_modified_time = 1555004016.6768
-_enable_loop = True
-_template_filename = 'C:/Users/the_m/Desktop/intex_website/mysite/homepage/templates/base.htm'
->>>>>>> d31b487aa03192863b6112820e4703e6b89099d7
 _template_uri = '/homepage/templates/base.htm'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -27,39 +21,21 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-<<<<<<< HEAD
-        self = context.get('self', UNDEFINED)
-        def navbar_items():
-            return render_navbar_items(context._locals(__M_locals))
-        def title():
-            return render_title(context._locals(__M_locals))
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def left_content():
             return render_left_content(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
+        self = context.get('self', UNDEFINED)
+        def title():
+            return render_title(context._locals(__M_locals))
+        def navbar_items():
+            return render_navbar_items(context._locals(__M_locals))
         request = context.get('request', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n        <link rel="icon" href="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
         __M_writer('homepage/media/circle.jpg">\r\n        <title>OTF &mdash; ')
-=======
-        def left_content():
-            return render_left_content(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        self = context.get('self', UNDEFINED)
-        request = context.get('request', UNDEFINED)
-        def navbar_items():
-            return render_navbar_items(context._locals(__M_locals))
-        def content():
-            return render_content(context._locals(__M_locals))
-        def title():
-            return render_title(context._locals(__M_locals))
-        __M_writer = context.writer()
-        __M_writer('\r\n<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n        <link rel="icon" href="')
-        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
-        __M_writer('homepage/media/favicon.ico">\r\n        <title>Jedi &mdash; ')
->>>>>>> d31b487aa03192863b6112820e4703e6b89099d7
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
             context['self'].title(**pageargs)
         
@@ -169,10 +145,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-<<<<<<< HEAD
 {"filename": "C:/Users/USER/intex2/thepack-intex/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 2, "20": 0, "36": 2, "37": 7, "38": 7, "43": 8, "44": 11, "45": 11, "46": 11, "47": 12, "48": 12, "49": 13, "50": 13, "51": 17, "52": 18, "53": 18, "54": 24, "55": 26, "56": 26, "57": 29, "58": 29, "59": 35, "60": 35, "61": 38, "62": 38, "63": 41, "64": 41, "65": 44, "66": 44, "67": 47, "68": 47, "73": 51, "74": 52, "75": 53, "76": 53, "77": 53, "78": 55, "79": 56, "80": 57, "81": 68, "86": 78, "91": 83, "92": 89, "93": 89, "99": 8, "110": 50, "116": 50, "122": 77, "128": 77, "134": 81, "140": 81, "146": 140}}
-=======
-{"filename": "C:/Users/the_m/Desktop/intex_website/mysite/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 2, "20": 0, "36": 2, "37": 7, "38": 7, "43": 8, "44": 11, "45": 11, "46": 11, "47": 12, "48": 12, "49": 13, "50": 13, "51": 17, "52": 18, "53": 18, "54": 24, "55": 26, "56": 26, "57": 29, "58": 29, "59": 35, "60": 35, "61": 38, "62": 38, "63": 41, "64": 41, "65": 44, "66": 44, "67": 47, "68": 47, "73": 51, "74": 52, "75": 53, "76": 53, "77": 53, "78": 55, "79": 56, "80": 57, "81": 68, "86": 78, "91": 83, "92": 89, "93": 89, "99": 8, "110": 50, "116": 50, "122": 77, "128": 77, "134": 81, "140": 81, "146": 140}}
->>>>>>> d31b487aa03192863b6112820e4703e6b89099d7
 __M_END_METADATA
 """

@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1555004481.6521132
+_modified_time = 1555005840.317122
 _enable_loop = True
-_template_filename = 'C:/Users/the_m/Desktop/intex_website/mysite/account/templates/app_base.htm'
+_template_filename = 'C:/Users/USER/intex2/thepack-intex/account/templates/app_base.htm'
 _template_uri = 'app_base.htm'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -76,6 +76,6 @@ def render_left_menu(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/the_m/Desktop/intex_website/mysite/account/templates/app_base.htm", "uri": "app_base.htm", "source_encoding": "utf-8", "line_map": {"29": 0, "38": 1, "43": 5, "53": 3, "59": 3, "65": 7, "71": 7, "77": 71}}
+{"filename": "C:/Users/USER/intex2/thepack-intex/account/templates/app_base.htm", "uri": "app_base.htm", "source_encoding": "utf-8", "line_map": {"29": 0, "38": 1, "43": 5, "53": 3, "59": 3, "65": 7, "71": 7, "77": 71}}
 __M_END_METADATA
 """
