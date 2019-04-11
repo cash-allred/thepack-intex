@@ -26,7 +26,7 @@
                 <img src="${ STATIC_URL }homepage/media/otflogo.png" alt="Opioid Task Force Logo">
             </div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <img class="small_logo" src="${ STATIC_URL }homepage/media/python.png" alt="python" />
+                <img class="small_logo" src="${ STATIC_URL }homepage/media/circle.jpg" alt="logo" />
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -34,6 +34,18 @@
                     <ul class="navbar-nav mr-auto">
                     <li class="nav-item ${ 'active' if request.dmp.page == 'index' else ''}">
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ${ 'active' if request.dmp.page == '/prescribers/Index' else ''}">
+                        <a class="nav-link" href="/prescribers/">Prescribers</a>
+                    </li>
+                    <li class="nav-item ${ 'active' if request.dmp.page == '/drugs/index/' else ''}">
+                        <a class="nav-link" href="/drugs/">Drugs</a>
+                    </li>
+                    <li class="nav-item ${ 'active' if request.dmp.page == 'index' else ''}">
+                        <a class="nav-link" href="/homepage/dashboard/">Dashboard <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ${ 'active' if request.dmp.page == 'index' else ''}">
+                        <a class="nav-link" href="/homepage/map/">Map <span class="sr-only">(current)</span></a>
                     </li>
                     <%block name="navbar_items">                    
                     </%block>
@@ -63,24 +75,23 @@
         <main>
             <div id="site_left">
                 <%block name="left_menu">
-                    Left side
                 </%block>
             </div>
             <div id="site_center">
                 <%block name="content">
-                    center side
+
                 </%block>
             </div>
             <div id="site_right">
                 <%block name="right_content">
-                    right text
+
                 </%block>
             </div>
         </main>
 
         <footer>
            <div class="footer_text">
-            Copyright &copy; ${ datetime.datetime.today().year } Cash Allred  
+            Copyright &copy; ${ datetime.datetime.today().year } PACK Consulting  
             </div>     
         </footer>
 

@@ -72,7 +72,7 @@ main {
         position: absolute;
         right: 0;
         top: 0;
-        width: $side_col_width;
+        width: 350px;
         height: 100%;
     }
 
@@ -89,6 +89,7 @@ footer {
     bottom:0;
     text-align: right;
     width:100%;
+    background-color: #FFFFFF;
 }
 
 .footer_text{
