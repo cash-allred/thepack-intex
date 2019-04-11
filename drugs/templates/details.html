@@ -1,5 +1,6 @@
 <%inherit file="/homepage/templates/base.htm" />
 
+<%block name="title">Drug Details</%block>
 <%block name="content">
     <div class="content">
         <h3>Drug Details</h3>
@@ -24,47 +25,55 @@
         <table class="table">
             <thead class="thead-light">
                 <tr>
-                    <th>Doctor ID</th>
-                    <th>Ammount Prescribed</th>
+                    <th scope="col">Doctor ID</th>
+                    <th scope="col">Ammount Prescribed</th>
+                    <th scope="col">Details</th>
                 </tr>
             </thead>
             <tbody>
             %for x in range(10):
                 <tr>                
-                    <td>${doctors[x].doctorID_id}</td>
+                    <th scope="row">${doctors[x].doctorID_id}</th>
                     <td>${doctors[x].quantity}</td>
+                    <td><a  class="btn btn-primary" href="/prescribers/details/${doctors[x].doctorID_id}" role="button">Details</a><td>
                 </tr>
             %endfor
             </tbody>
         </table>
          <h3>Top 5 Drugs Commonly Prescribed with ${drug.drugName}:</h3>
-         <table class="table">
+        <table class="table">
             <thead class="thead-light">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Drug Name:</th>
+                    <th scope="col">Details</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th scope="row">1</th>
                     <td>${relitems[37]}</td>
+                    <td><a class="btn btn-primary" href="/drugs/details/${links[0].id}" role="button">Details</a><td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
                     <td>${relitems[39]}</td>
+                    <td><a class="btn btn-primary" href="/drugs/details/${links[1].id}" role="button">Details</a><td>
                 </tr>
                 <tr>
                     <th scope="row">3</th>
                     <td>${relitems[41]}</td>
+                    <td><a class="btn btn-primary" href="/drugs/details/${links[2].id}" role="button">Details</a><td>
                 </tr>
                 <tr>
                     <th scope="row">4</th>
                     <td>${relitems[43]}</td>
+                    <td><a class="btn btn-primary" href="/drugs/details/${links[3].id}" role="button">Details</a><td>
                 </tr>
                 <tr>
                     <th scope="row">5</th>
                     <td>${relitems[45]}</td>
+                    <td><a class="btn btn-primary" href="/drugs/details/${links[4].id}" role="button">Details</a><td>
                 </tr>
             </tbody>
         </table>
