@@ -19,8 +19,13 @@ def process_request(request, docid):
     doctor = hmod.Doctor.objects.filter(doctorID=int(docid))
     prescriptions = hmod.Prescription.objects.filter(doctorID=int(docid))
     average = {}
+    avgs1 = []
+    ave = []
+    str1 = str
+    str2 = str
     for script in prescriptions:
         average[script.drugName]=hmod.Prescription.objects.filter(drugName=int(script.drugName_id)).aggregate(Avg('quantity'))
+        avgs1.append(str1(average[script.drugName]))
     
     url = "https://ussouthcentral.services.azureml.net/workspaces/e1fc1ce7a0a943dd84acf96dedd87e36/services/d31c28dd22324b28a6fe09d906d463a7/execute"
 
@@ -38,9 +43,11 @@ def process_request(request, docid):
 
 
     print(response.text)
-    str = response.text
-    relusers = str.split('"')
+    str2 = response.text
+    relusers = str2.split('"')
     print(relusers[37], relusers[39], relusers[41], relusers[43], relusers[45])
+    print(avgs1)    
+    
 
 
     context={
@@ -48,6 +55,8 @@ def process_request(request, docid):
         'prescriptions': prescriptions,
         'average': average,
         'relusers': relusers,
+        'avgs1': avgs1,
+        
     }
     return request.dmp.render('details.html', context)
 
