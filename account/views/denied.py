@@ -8,9 +8,10 @@ from django.contrib.auth import logout
 def process_request(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/account/login/')
-        
-    logout(request)
-    # Redirect to a success page.
 
-    return HttpResponseRedirect('/')
+    context={
+        
+    }
+    
+    return request.dmp.render('denied.html', context)
     

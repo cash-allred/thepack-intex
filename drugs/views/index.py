@@ -8,7 +8,10 @@ from django.shortcuts import render, HttpResponseRedirect
 
 @view_function
 def process_request(request):
-    #this is where I figure out search
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/account/login/')
+
+    #this is where I search
     if request.method == "POST":
     #clean the form and stuff, remove the line of code below
         form=drugSearchForm(request.POST)

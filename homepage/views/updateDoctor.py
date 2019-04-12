@@ -11,6 +11,9 @@ from django.shortcuts import render, HttpResponseRedirect
 
 @view_function
 def process_request(request, docid):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/account/login/')
+        
     doctor = hmod.Doctor.objects.get(doctorID=docid)
     initial = {
         'doctorID':doctor.doctorID,
