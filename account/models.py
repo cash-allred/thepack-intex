@@ -5,6 +5,12 @@ from catalog import models as cmod
 # Create your models here.
 class User(AbstractUser):
     birthdate = models.DateTimeField(null=True)
+    USER_TYPE_CHOICES = (
+        (1, 'Data Clerk'),
+        (2, 'Health Official'),
+        (3, 'Doctor'),
+    )
+    user_type = models.IntegerField(null=True, choices=USER_TYPE_CHOICES)
     
     def get_shopping_cart(self):   
             # retrieve (or create) a Sale with purchased=None for this user
