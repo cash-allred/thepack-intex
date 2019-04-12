@@ -8,15 +8,35 @@ from catalog import models as cmod
 def process_request(request):
 
     #used to create the users
-    #for (i) in range(10):
-       #u = amod.User()
-       #u.username = f'user{i}'
-       #u.first_name = 'first' + str(i)
-       #u.last_name = 'last' + str(i)
-       #u.email = f'me@some{i}.com'
-       #u.birthdate = datetime(2011, 1, 1)
-       #u.set_password('asdf')
-       #u.save()
+    # u = amod.User()
+    # u.username = 'SampleHealthOfficial'
+    # u.first_name = 'Health'
+    # u.last_name = 'Official'
+    # u.email = 'HealthOfficial@test.com'
+    # u.birthdate = datetime(2011, 1, 1)
+    # u.set_password('asdf')
+    # u.user_type = '2'
+    # u.save()
+
+    # u2 = amod.User()
+    # u2.username = 'SampleDataClerk'
+    # u2.first_name = 'Data'
+    # u2.last_name = 'Clerk'
+    # u2.email = 'DataClerk@test.com'
+    # u2.birthdate = datetime(2011, 1, 1)
+    # u2.set_password('asdf')
+    # u2.user_type = '1'
+    # u2.save()
+
+    # u3 = amod.User()
+    # u3.username = 'SampleDoctor'
+    # u3.first_name = 'Dr.'
+    # u3.last_name = 'Doctor'
+    # u3.email = 'Doctor@test.com'
+    # u3.birthdate = datetime(2011, 1, 1)
+    # u3.set_password('asdf')
+    # u3.user_type = '3'
+    # u3.save()
 
     context = {
         jscontext('now'): datetime.now(),
