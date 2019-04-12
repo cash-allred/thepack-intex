@@ -1,6 +1,5 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from catalog import models as cmod
 
 # Create your models here.
 class User(AbstractUser):
@@ -12,16 +11,16 @@ class User(AbstractUser):
     )
     user_type = models.IntegerField(null=True, choices=USER_TYPE_CHOICES)
     
-    def get_shopping_cart(self):   
-            # retrieve (or create) a Sale with purchased=None for this user
-            cart =cmod.Sale.objects.filter(user = self, purchased = None).first()
-            if cart is None:
-                cart = cmod.Sale()
-                cart.user = self
-            cart.recalculate()
-            cart.save()
-            # return the Sale object
-            return cart
+    # def get_shopping_cart(self):   
+    #         # retrieve (or create) a Sale with purchased=None for this user
+    #         cart =cmod.Sale.objects.filter(user = self, purchased = None).first()
+    #         if cart is None:
+    #             cart = cmod.Sale()
+    #             cart.user = self
+    #         cart.recalculate()
+    #         cart.save()
+    #         # return the Sale object
+    #         return cart
 
     # retrieve (or create) a Sale with purchased=None for this user
     # return the Sale object

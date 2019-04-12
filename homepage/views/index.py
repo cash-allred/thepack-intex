@@ -2,7 +2,6 @@ from django.conf import settings
 from django_mako_plus import view_function, jscontext
 from datetime import datetime
 from account import models as amod
-from catalog import models as cmod
 from django.shortcuts import render, HttpResponseRedirect
 
 @view_function
