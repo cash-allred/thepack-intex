@@ -13,6 +13,10 @@ def process_request(request):
     doctor = hmod.Doctor
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/account/login/')
+
+    if not request.user.user_type == 1:
+        return HttpResponseRedirect('/account/denied/')
+
     if request.method =="POST":
         form=doctorCreateForm(request.POST)
         form.doctor = doctor

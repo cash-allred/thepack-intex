@@ -11,6 +11,8 @@ from django.shortcuts import render, HttpResponseRedirect
 def process_request(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/account/login/')
+    if request.user.user_type == 1:
+        return HttpResponseRedirect('/account/denied/')
     context = {
         jscontext('now'): datetime.now(),
     }
