@@ -3,6 +3,7 @@ from django_mako_plus import view_function, jscontext
 from datetime import datetime
 from account import models as amod
 from catalog import models as cmod
+from django.shortcuts import render, HttpResponseRedirect
 
 @view_function
 def process_request(request):
@@ -17,6 +18,9 @@ def process_request(request):
        #u.birthdate = datetime(2011, 1, 1)
        #u.set_password('asdf')
        #u.save()
+
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/account/login/')
 
     context = {
         jscontext('now'): datetime.now(),

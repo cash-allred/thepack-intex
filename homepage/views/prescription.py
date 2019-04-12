@@ -16,6 +16,9 @@ from django.shortcuts import render, HttpResponseRedirect
 #figure out create function!
 @view_function
 def process_request(request, docid):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/account/login/')
+        
     prescription = hmod.Prescription
     drug = hmod.Drug.objects.all()
     doctor = hmod

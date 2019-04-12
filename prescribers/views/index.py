@@ -11,6 +11,9 @@ ITEMS_PER_PAGE = 8
 
 @view_function
 def process_request(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/account/login/')
+        
     #this is where I figure out search
     if request.method == "POST":
     #clean the form and stuff, remove the line of code below

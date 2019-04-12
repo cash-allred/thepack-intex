@@ -16,6 +16,9 @@ ITEMS_PER_PAGE = 8
 
 @view_function
 def process_request(request, docid):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/account/login/')    
+    
     doctor = hmod.Doctor.objects.filter(doctorID=int(docid))
     prescriptions = hmod.Prescription.objects.filter(doctorID=int(docid))
     average = {}

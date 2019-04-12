@@ -11,6 +11,8 @@ from django.shortcuts import render, HttpResponseRedirect
 @view_function
 def process_request(request):
     doctor = hmod.Doctor
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/account/login/')
     if request.method =="POST":
         form=doctorCreateForm(request.POST)
         form.doctor = doctor
